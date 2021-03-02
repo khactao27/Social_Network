@@ -1,0 +1,43 @@
+.sticky-header {
+    position: sticky;
+    position: -webkit-sticky;
+    display: flex;
+}
+.search-button {
+    display: flex;
+}
+.options-user {
+    display: flex;
+    flex-direction: row;
+}
+.post-status {
+    display: flex;
+    flex-direction: column;
+}
+.post {
+    display: flex;
+    flex-direction: column;
+}
+.username-header {
+    display: flex;
+    flex-direction: row;
+}
+.images-list-post {
+    display: flex;
+    flex-direction: row;
+}
+.like-bar {
+    display: flex;
+    flex-direction: row;
+}
+.caption-post {
+    display: flex;
+}
+.comments-post {
+    display: flex;
+    flex-direction: column;
+}
+.add-comment {
+    display: flex;
+    flex-direction: row;
+}
