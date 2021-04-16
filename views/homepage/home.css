@@ -1,0 +1,155 @@
+/*
+Css for navigation - header
+*/
+
+body{
+    width: 100%;
+}
+
+.Navigation-header {
+
+}
+::-webkit-input-placeholder {
+    text-align: center;
+  }
+.Main-nav {
+    display: flex;
+    orientation: row;
+    position: -webkit-sticky;
+    top: 0;
+    position: sticky;
+    background-color: #cae8ca;
+    border: 1px solid #4CAF50;
+    justify-content: center;
+    text-align: center;
+    height: 50px;
+    align-items: baseline;
+}
+.logo {
+    flex-grow: 1;
+}
+.search-button {
+    flex-grow: 1;
+}
+.feature-button {
+    display: flex;
+    orientation: row;
+    flex-grow: 1;
+    align-items: baseline;
+}
+
+.text-input{
+    border: 1px solid;
+    border-radius: 18px;
+}
+
+.button-home {
+    margin-left: 10px;
+}
+.messager{
+   margin-left: 10px;
+}
+.notification{
+    margin-left: 10px;
+}
+/*
+Css for main-section
+*/
+.main {
+    margin: 0 25%;
+}
+.new-post {
+    background-color: #cae8ca;
+    margin: 10px 0;
+    border: 1px solid #FFF;
+    border-radius: 18px;
+    padding: 10px 0;
+}
+.post {
+    background-color: bisque;
+    border: 1px solid #FFF;
+    border-radius: 10px;
+}
+.header-article {
+    display: flex;
+    align-items: baseline;
+    align-items: baseline;
+}
+.image-list {
+
+}
+.content {
+
+}
+.button-like {
+    display: flex;
+    align-items: baseline;
+}
+.total-like{
+
+}
+.caption-cmt{
+
+}
+.add-cmt {  
+    display: flex;
+    align-items: baseline;
+}
+.test{
+    border-radius: 50%;
+}
+
+#btn-cmt{
+    border: none;
+}
+/*
+// CSS for Modal
+*/
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            padding-top: 100px;
+            /* Location of the box */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 50%;
+            border-radius: 18px;
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaaaaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }

@@ -1,59 +1,223 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>=)))</title>
-        <meta charset="utf-8">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <link rel="stylesheet" href=".../public/CSS/home/home.css">
-        <script>
-            $(document).ready(()=>{
-                
-            });
-        </script>
-    </head>
-    <body>
+<html lang="en">
+
+<head>
+    <title>Intargram</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./home.css">
+    <script src="./home.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <nav class="Navigation-header">
         <div>
-            <div class="sticky-header">
-                <div>
-                    <img src="#" alt="Logo">
-                    <span>Social Network</span>
-                </div>
-                <div class="search-button">
-                    <form action="/users" method="POST">
-                        <input type="text" name="dataSearch" value="Search" id="inputSearch">
-                    </form>
-                </div>
-                <div class="options-user">
-                    <a href="#"><img src="#" alt="Home Logo"></a>
-                    <a href="#"><img src="#" alt="Chat Logo"></a>
-                    <a href="#"><img src="#" alt="Options"></a>
-                </div>
-            </div>
-            <div>
-                <div class="post-status">
-
-                </div>
-                <div class="post">
-                    <div class="username-header">
-
+            <div class="Navigation-header">
+                <div class="Main-nav">
+                    <div class="logo">
+                        <a href="/">
+                            <img alt="Instagram" src="#">
+                        </a>
                     </div>
-                    <div class="images-list-post">
-
+                    <div class="search-button">
+                        <input type="text" placeholder="Search">
                     </div>
-                    <div class="like-bar">
-
-                    </div>
-                    <div class="caption-post">
-
-                    </div>
-                    <div class="comments-post">
-
-                    </div>
-                    <div class="add-comment">
-
+                    <div class="feature-button">
+                        <div role="button" class="button-home">
+                            <a href="#">
+                                <svg aria-label="Home" class="_8-yf5 " fill="#262626" height="22"
+                                    viewBox="0 0 48 48" width="22">
+                                    <path
+                                        d="M45.5 48H30.1c-.8 0-1.5-.7-1.5-1.5V34.2c0-2.6-2.1-4.6-4.6-4.6s-4.6 2.1-4.6 4.6v12.3c0 .8-.7 1.5-1.5 1.5H2.5c-.8 0-1.5-.7-1.5-1.5V23c0-.4.2-.8.4-1.1L22.9.4c.6-.6 1.6-.6 2.1 0l21.5 21.5c.3.3.4.7.4 1.1v23.5c.1.8-.6 1.5-1.4 1.5z">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="messager">
+                            <a href="#">
+                                <svg aria-label="Direct" class="_8-yf5 " fill="#262626" height="22"
+                                    viewBox="0 0 48 48" width="22">
+                                    <path
+                                        d="M47.8 3.8c-.3-.5-.8-.8-1.3-.8h-45C.9 3.1.3 3.5.1 4S0 5.2.4 5.7l15.9 15.6 5.5 22.6c.1.6.6 1 1.2 1.1h.2c.5 0 1-.3 1.3-.7l23.2-39c.4-.4.4-1 .1-1.5zM5.2 6.1h35.5L18 18.7 5.2 6.1zm18.7 33.6l-4.4-18.4L42.4 8.6 23.9 39.7z">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="notification">
+                            <a href="#">
+                                <svg aria-label="Activity Feed" class="_8-yf5 " fill="#262626" height="22"
+                                    viewBox="0 0 48 48" width="22">
+                                    <path
+                                        d="M34.6 6.1c5.7 0 10.4 5.2 10.4 11.5 0 6.8-5.9 11-11.5 16S25 41.3 24 41.9c-1.1-.7-4.7-4-9.5-8.3-5.7-5-11.5-9.2-11.5-16C3 11.3 7.7 6.1 13.4 6.1c4.2 0 6.5 2 8.1 4.3 1.9 2.6 2.2 3.9 2.5 3.9.3 0 .6-1.3 2.5-3.9 1.6-2.3 3.9-4.3 8.1-4.3m0-3c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5.6 0 1.1-.2 1.6-.5 1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
+                        <div class="notification">
+                            <a href="#">
+                                <svg aria-label="Activity Feed" class="_8-yf5 " fill="#262626" height="22"
+                                    viewBox="0 0 48 48" width="22">
+                                    <path
+                                        d="M34.6 6.1c5.7 0 10.4 5.2 10.4 11.5 0 6.8-5.9 11-11.5 16S25 41.3 24 41.9c-1.1-.7-4.7-4-9.5-8.3-5.7-5-11.5-9.2-11.5-16C3 11.3 7.7 6.1 13.4 6.1c4.2 0 6.5 2 8.1 4.3 1.9 2.6 2.2 3.9 2.5 3.9.3 0 .6-1.3 2.5-3.9 1.6-2.3 3.9-4.3 8.1-4.3m0-3c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5.6 0 1.1-.2 1.6-.5 1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z">
+                                    </path>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </body>
+    </nav>
+    <section>
+
+        <main>
+            <div class="main">
+                <div class="new-post">
+                    <form action="#">
+                        <img src="#" alt="avatar">
+                        <textarea class="text-input"name="post" id="post-new" cols="70" placeholder="Bạn đang nghĩ gì ?" rows="2"></textarea>
+                    </form>
+                    <div id="myModal" class="modal">
+
+                        <!-- Modal content -->
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <Form action="#" method="POST">
+                                <div>
+                                    <h2>Tạo bài viết</h2>
+                                </div>
+                                <hr>
+                                <div>
+                                    <a href="#">Jonse Tee</a>
+                                    <img src="#" alt="avatar">
+                                </div>
+                                <div>
+                                    <textarea name="post" id="post" cols="80" rows="20"></textarea>
+                                </div>
+                                <div>
+                                    <a href="#">Upload image</a>
+                                </div>
+                                <div>
+                                    | additional infor
+                                </div>
+                                <div>
+                                    <button type="submit">Đăng bài</button>
+                                </div>
+                            </Form>
+                        </div>
+                
+                    </div>
+                
+                    <script>
+                        // Get the modal
+                        var modal = document.getElementById("myModal");
+                
+                        // Get the button that opens the modal
+                        var btn = document.getElementById("myBtn");
+                
+                        // Get the <span> element that closes the modal
+                        var span = document.getElementsByClassName("close")[0];
+                
+                        // When the user clicks the textarea, open the modal 
+                        let postNew = document.getElementById("post-new");
+                        postNew.onclick = function () {
+                            modal.style.display = "block";
+                        }
+                        // When the user clicks on <span> (x), close the modal
+                        span.onclick = function () {
+                            modal.style.display = "none";
+                        }
+                
+                        // When the user clicks anywhere outside of the modal, close it
+                        window.onclick = function (event) {
+                            if (event.target == modal) {
+                                modal.style.display = "none";
+                            }
+                        }
+                    </script>
+                </div>
+                <div>
+                    <div class="post">
+                        <article>
+                            <header class="header-article">
+                                <div>
+                                    <a href="#" >
+                                        <img style="width: 40px;height: 40px;" alt="python.hub's profile picture" class="test" crossorigin="anonymous"
+                                            data-testid="user-avatar" draggable="false"
+                                            src="https://instagram.fhan2-1.fna.fbcdn.net/v/t51.2885-19/s150x150/73251442_2472444979541316_7764039155805323264_n.jpg?tp=1&amp;_nc_ht=instagram.fhan2-1.fna.fbcdn.net&amp;_nc_ohc=tywlFYJ0XIYAX8DqZhV&amp;edm=AEF8tYYAAAAA&amp;ccb=7-4&amp;oh=6fdc026fbad952a383091144d9dfcec8&amp;oe=6091836C&amp;_nc_sid=a9513d">
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="#">
+                                        | VTV24
+                                    </a>
+                                </div>
+                            </header>
+                            <div class="image-list">
+                                <img alt="Photo by Python helper on April 05, 2021. May be an image of text that says 'What is the output of the following Ûyhn Code? for k=[j j in range(3)] range print Choose the correct option:- A. Error B.123 C.012 D. None of above'."
+                                    class="FFVAD" crossorigin="anonymous" decoding="auto" style="object-fit: cover;"
+                                    sizes="614px"
+                                    srcset="https://instagram.fhan2-1.fna.fbcdn.net/v/t51.2885-15/sh0.08/e35/p640x640/169276434_201588961771225_3138235723640649600_n.jpg?tp=1&amp;_nc_ht=instagram.fhan2-1.fna.fbcdn.net&amp;_nc_cat=101&amp;_nc_ohc=BGMYjFBVV8QAX_ZzZIp&amp;edm=APU89FAAAAAA&amp;ccb=7-4&amp;oh=42f3163764f5077b06b426123457f5ab&amp;oe=609095C1&amp;_nc_sid=86f79a 640w,https://instagram.fhan2-1.fna.fbcdn.net/v/t51.2885-15/e35/169276434_201588961771225_3138235723640649600_n.jpg?tp=1&amp;_nc_ht=instagram.fhan2-1.fna.fbcdn.net&amp;_nc_cat=101&amp;_nc_ohc=BGMYjFBVV8QAX_ZzZIp&amp;edm=APU89FAAAAAA&amp;ccb=7-4&amp;oh=6e7cb0bcfed80717c6289c1642b45886&amp;oe=608FAC2B&amp;_nc_sid=86f79a 750w,https://instagram.fhan2-1.fna.fbcdn.net/v/t51.2885-15/e35/169276434_201588961771225_3138235723640649600_n.jpg?tp=1&amp;_nc_ht=instagram.fhan2-1.fna.fbcdn.net&amp;_nc_cat=101&amp;_nc_ohc=BGMYjFBVV8QAX_ZzZIp&amp;edm=APU89FAAAAAA&amp;ccb=7-4&amp;oh=6e7cb0bcfed80717c6289c1642b45886&amp;oe=608FAC2B&amp;_nc_sid=86f79a 1080w"
+                                    src="https://instagram.fhan2-1.fna.fbcdn.net/v/t51.2885-15/e35/169276434_201588961771225_3138235723640649600_n.jpg?tp=1&amp;_nc_ht=instagram.fhan2-1.fna.fbcdn.net&amp;_nc_cat=101&amp;_nc_ohc=BGMYjFBVV8QAX_ZzZIp&amp;edm=ABfd0MgAAAAA&amp;ccb=7-4&amp;oh=0f1918f57f3e0ae55bc4b80e8691f90d&amp;oe=608FAC2B&amp;_nc_sid=7bff83">
+                            </div>
+                            <div class="content">
+                                <div class="button-like">
+                                    <div role="button">
+                                        <svg aria-label="Activity Feed" class="_8-yf5 " fill="#262626" height="22"
+                                            viewBox="0 0 48 48" width="22">
+                                            <path
+                                                d="M34.6 6.1c5.7 0 10.4 5.2 10.4 11.5 0 6.8-5.9 11-11.5 16S25 41.3 24 41.9c-1.1-.7-4.7-4-9.5-8.3-5.7-5-11.5-9.2-11.5-16C3 11.3 7.7 6.1 13.4 6.1c4.2 0 6.5 2 8.1 4.3 1.9 2.6 2.2 3.9 2.5 3.9.3 0 .6-1.3 2.5-3.9 1.6-2.3 3.9-4.3 8.1-4.3m0-3c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5.6 0 1.1-.2 1.6-.5 1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z">
+                                            </path>
+                                        </svg>
+                                    </div>
+                                    <button type="button" id="btn-cmt">
+                                        <div>
+                                            <svg aria-label="Comment" class="_8-yf5 " fill="#262626" height="24"
+                                                viewBox="0 0 48 48" width="24">
+                                                <path clip-rule="evenodd"
+                                                    d="M47.5 46.1l-2.8-11c1.8-3.3 2.8-7.1 2.8-11.1C47.5 11 37 .5 24 .5S.5 11 .5 24 11 47.5 24 47.5c4 0 7.8-1 11.1-2.8l11 2.8c.8.2 1.6-.6 1.4-1.4zm-3-22.1c0 4-1 7-2.6 10-.2.4-.3.9-.2 1.4l2.1 8.4-8.3-2.1c-.5-.1-1-.1-1.4.2-1.8 1-5.2 2.6-10 2.6-11.4 0-20.6-9.2-20.6-20.5S12.7 3.5 24 3.5 44.5 12.7 44.5 24z"
+                                                    fill-rule="evenodd"></path>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                </div>
+                                <div class="total-like">
+                                    1234likes
+                                </div>
+                                <div class="caption-cmt">
+                                    <div>
+                                        <span>
+                                            <a href="#">VTV24</a>
+                                            <span>
+                                                New like!
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <div>
+                                        <div>
+                                            <span>tao_duongkhac:</span>
+                                            <span>Very good</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="add-cmt">
+                                    <form action="#" method="POST">
+                                        <div>
+                                            <textarea name="cmt" id="a" cols="80" rows="3"
+                                            placeholder="Add a comment"></textarea>
+                                        </div>
+                                        <div>
+                                            <button type="submit">Post</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </section>
+</body>
+
 </html>
