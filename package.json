@@ -1,0 +1,23 @@
+{
+  "name": "social-network-it4409",
+  "version": "1.0.0",
+  "description": "Project Social network of group 21 - Web Tech",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/soict-it4409/20202/nhom21/social-network-it4409.git"
+  },
+  "author": "Group 21",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/soict-it4409/20202/nhom21/social-network-it4409/issues"
+  },
+  "homepage": "https://gitlab.com/soict-it4409/20202/nhom21/social-network-it4409#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  }
+}
