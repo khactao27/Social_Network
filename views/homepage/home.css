@@ -11,7 +11,7 @@ body{
 }
 ::-webkit-input-placeholder {
     text-align: center;
-  }
+}
 .Main-nav {
     display: flex;
     orientation: row;
@@ -56,7 +56,7 @@ body{
 Css for main-section
 */
 .main {
-    margin: 0 25%;
+    margin: 0 20%;
 }
 .new-post {
     background-color: #cae8ca;

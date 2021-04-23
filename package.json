@@ -17,6 +17,7 @@
   },
   "homepage": "https://gitlab.com/soict-it4409/20202/nhom21/social-network-it4409#readme",
   "dependencies": {
+    "ejs": "^3.1.6",
     "express": "^4.17.1",
     "mysql": "^2.18.1"
   }
