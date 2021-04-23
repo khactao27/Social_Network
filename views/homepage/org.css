@@ -82,7 +82,7 @@ body{
 }
 #input-post{
     width: 100%;
-    padding: 10px 0;
+    padding: 15px 0;
     border: 1px solid #fafafa;
     margin-left: 2%;
     border-radius: 8px;
@@ -151,6 +151,7 @@ body{
     border-radius: 12px;
     background-color: #eceaea;
     margin: 5px 0;
+    padding: 10px;
 }
 .article-header{
     padding: 5px 10%;
@@ -253,4 +254,39 @@ body{
   @keyframes fadeIn {
     from {opacity: 0;}
     to {opacity:1 ;}
+}
+
+/*CSS for create a new post*/
+.header-newpost {
+    text-align: center;
+}
+.header-add{
+    display: flex;
+    align-items: center;
+    padding: 5px 0;
+}
+.content-newpost{
+
+}
+.feature-add {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.create-btn{
+
+}
+#btn-submit{
+    width: 100%;
+    padding: 10px 0;
+    background-color: #0099ff;
+    border: 1px solid #fafafa;
+    border-radius: 8px;
+    font-size: large;
+    color: #FFFF;
+}
+#post {
+    width: 100%;
+    border: 1px solid #d3dcdd;
+    border-radius: 8px;
 }

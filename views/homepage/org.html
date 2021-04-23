@@ -18,7 +18,6 @@
         </div>
         <div class="btn-search">
             <input type="text" id="input-search" onclick="myFunction()" placeholder="Search by name">
-            <span class="popuptext" id="myPopup">A Simple Popup!</span>
             <div class="result-search">
                 <a href="#">tao_duongkhac</a>
                 <a href="#">mai_truongson</a>
@@ -73,28 +72,42 @@
             <!-- Modal content -->
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <Form action="#" method="POST">
-                    <div>
+                <form action="#" method="POST">
+                    <div class="header-newpost">
                         <h2>Tạo bài viết</h2>
                     </div>
                     <hr>
-                    <div>
-                        <a href="#">Jonse Tee</a>
-                        <img src="#" alt="avatar">
+                    <div class="header-add">
+                        <img src="./avatar.jpg" class="avatar-header" alt="avatar">
+                        <a href="#" style="margin-left: 2%;"><b>Jonse Tee</b></a>
+                    </div>
+                    <div class="content-newpost">
+                        <span>
+                            <textarea name="post" id="post" cols="95" placeholder="Bạn đang nghĩ cái đéo gì vậy?"
+                                rows="5"></textarea>
+                        </span>
+                    </div>
+                    <div class="feature-add">
+                        <span>
+                            <svg aria-label="Emoji" class="_8-yf5 " fill="#262626" height="24" viewBox="0 0 48 48"
+                                width="24">
+                                <path
+                                    d="M24 48C10.8 48 0 37.2 0 24S10.8 0 24 0s24 10.8 24 24-10.8 24-24 24zm0-45C12.4 3 3 12.4 3 24s9.4 21 21 21 21-9.4 21-21S35.6 3 24 3z">
+                                </path>
+                                <path
+                                    d="M34.9 24c0-1.4-1.1-2.5-2.5-2.5s-2.5 1.1-2.5 2.5 1.1 2.5 2.5 2.5 2.5-1.1 2.5-2.5zm-21.8 0c0-1.4 1.1-2.5 2.5-2.5s2.5 1.1 2.5 2.5-1.1 2.5-2.5 2.5-2.5-1.1-2.5-2.5zM24 37.3c-5.2 0-8-3.5-8.2-3.7-.5-.6-.4-1.6.2-2.1.6-.5 1.6-.4 2.1.2.1.1 2.1 2.5 5.8 2.5 3.7 0 5.8-2.5 5.8-2.5.5-.6 1.5-.7 2.1-.2.6.5.7 1.5.2 2.1 0 .2-2.8 3.7-8 3.7z">
+                                </path>
+                            </svg>
+                        </span>
+                        <a href="#">Thêm ảnh</a>
                     </div>
                     <div>
-                        <textarea name="post" id="post" cols="80" rows="20"></textarea>
+                        | Thêm vị trí
                     </div>
-                    <div>
-                        <a href="#">Upload image</a>
+                    <div class="create-btn">
+                        <input id="btn-submit" type="submit" value="Đăng bài">
                     </div>
-                    <div>
-                        | additional infor
-                    </div>
-                    <div>
-                        <button type="submit">Đăng bài</button>
-                    </div>
-                </Form>
+                </form>
             </div>
 
         </div>
@@ -124,11 +137,20 @@
                 }
             }
         </script>
+        <script>
+            //for check input enter?
+            let checkEmptyInput = () => {
+                var content = document.getElementById("post");
+                if (content != null) {
+                    document.getElementById("btn-submit");
+                }
+            }
+        </script>
         <div class="posts">
             <div class="article">
                 <div class="article-header">
                     <img src="./avatar.jpg" class="avatar-header" alt="avatar">
-                    <a href="#"><b>VTV24</b></a>
+                    <a href="#" style="margin-left: 2%;"><b>VTV24</b></a>
                 </div>
                 <div class="images">
                     <img id="image-item" src="./avatar.jpg" alt="image-status">
