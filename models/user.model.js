@@ -44,6 +44,10 @@ const User = sequelize.define('user', {
         type: DataTypes.STRING(45),
         allowNull: true
     },
+    status: {
+        type: DataTypes.INTEGER(1),
+        allowNull: false
+    },
     followers: {
         type: DataTypes.INTEGER,
         allowNull: false
