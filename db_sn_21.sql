@@ -53,7 +53,7 @@ CREATE TABLE `Comment` (
   `comment_id` varchar(45) NOT NULL,
   `user_id` varchar(45) NOT NULL,
   `post_id` varchar(45) NOT NULL,
-  `content` varchar(45) NOT NULL,
+  `content` varchar(300) NOT NULL,
   `timestamp` datetime NOT NULL,
   PRIMARY KEY (`comment_id`),
   KEY `fk_comment_user_idx` (`user_id`),
@@ -137,7 +137,7 @@ CREATE TABLE `Post` (
   `user_id` varchar(45) NOT NULL,
   `caption` varchar(300) DEFAULT NULL,
   `timestamp` datetime NOT NULL,
-  `img_url` varchar(45) NOT NULL,
+  `img_url` varchar(300) NOT NULL,
   `num_of_loves` int unsigned NOT NULL,
   `num_of_comments` int unsigned NOT NULL,
   PRIMARY KEY (`post_id`),
@@ -223,4 +223,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-15 21:33:49
+-- Dump completed on 2021-04-26 15:31:47
