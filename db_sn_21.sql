@@ -53,7 +53,7 @@ CREATE TABLE `Comment` (
   `comment_id` varchar(45) NOT NULL,
   `user_id` varchar(45) NOT NULL,
   `post_id` varchar(45) NOT NULL,
-  `content` varchar(45) NOT NULL,
+  `content` varchar(300) NOT NULL,
   `timestamp` datetime NOT NULL,
   PRIMARY KEY (`comment_id`),
   KEY `fk_comment_user_idx` (`user_id`),
@@ -137,7 +137,7 @@ CREATE TABLE `Post` (
   `user_id` varchar(45) NOT NULL,
   `caption` varchar(300) DEFAULT NULL,
   `timestamp` datetime NOT NULL,
-  `img_url` varchar(45) NOT NULL,
+  `img_url` varchar(300) NOT NULL,
   `num_of_loves` int unsigned NOT NULL,
   `num_of_comments` int unsigned NOT NULL,
   PRIMARY KEY (`post_id`),
@@ -196,6 +196,7 @@ CREATE TABLE `User` (
   `gender` bit(1) NOT NULL,
   `birthday` datetime DEFAULT NULL,
   `hometown` varchar(45) DEFAULT NULL,
+  `status` int NOT NULL,
   `followers` int NOT NULL,
   `authority` varchar(10) NOT NULL,
   PRIMARY KEY (`user_id`),
@@ -210,7 +211,7 @@ CREATE TABLE `User` (
 
 LOCK TABLES `User` WRITE;
 /*!40000 ALTER TABLE `User` DISABLE KEYS */;
-INSERT INTO `User` VALUES ('ant','A','Nguyen Thi',NULL,'123456','MI1-02 K63',_binary '\0','1999-02-04 00:00:00','Nam Dinh',2,'user'),('michealc','Micheal','Carrick',NULL,'123456','MI1-02 K63',_binary '','2000-08-27 00:00:00','England',3,'user'),('sonmt','Son','Mai Truong',NULL,'123456','IT1-04 K63',_binary '','2000-07-10 00:00:00','Hai Phong',3,'admin'),('sonth','Son','To Hoai',NULL,'123456','IT2-01 K63',_binary '','2000-08-01 00:00:00','Ha Noi',3,'admin'),('tantd','Tan','Truong Duy',NULL,'123456','PH1-01 K63',_binary '','1999-01-01 00:00:00','Bac Giang',2,'admin'),('taodk','Tao','Duong Khac',NULL,'123456','IT2-01 K63',_binary '','2000-01-01 00:00:00','Bac Giang',3,'admin'),('xhv','X','Hoang Van',NULL,'123456','IT2-01 K63',_binary '','2000-01-03 00:00:00','Ha Noi',2,'user');
+INSERT INTO `User` VALUES ('ant','A','Nguyen Thi',NULL,'123456','MI1-02 K63',_binary '\0','1999-02-04 00:00:00','Nam Dinh',0,2,'user'),('michealc','Micheal','Carrick',NULL,'123456','MI1-02 K63',_binary '','2000-08-27 00:00:00','England',1,3,'user'),('sonmt','Son','Mai Truong',NULL,'123456','IT1-04 K63',_binary '','2000-07-10 00:00:00','Hai Phong',0,3,'admin'),('sonth','Son','To Hoai',NULL,'123456','IT2-01 K63',_binary '','2000-08-01 00:00:00','Ha Noi',1,3,'admin'),('tantd','Tan','Truong Duy',NULL,'123456','PH1-01 K63',_binary '','1999-01-01 00:00:00','Bac Giang',0,2,'admin'),('taodk','Tao','Duong Khac',NULL,'123456','IT2-01 K63',_binary '','2000-01-01 00:00:00','Bac Giang',0,3,'admin'),('xhv','X','Hoang Van',NULL,'123456','IT2-01 K63',_binary '','2000-01-03 00:00:00','Ha Noi',2,2,'user');
 /*!40000 ALTER TABLE `User` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -223,4 +224,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-04-15 21:33:49
+-- Dump completed on 2021-04-26 16:18:19
