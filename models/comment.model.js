@@ -34,7 +34,7 @@ const Comment = sequelize.define('comment', {
         allowNull: false
     }
 }, {
-    tableName: 'comment',
+    tableName: 'Comment',
     timestamps: false
 });
 module.exports = Comment;

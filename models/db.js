@@ -1,16 +1,7 @@
 const { Sequelize } = require('sequelize');
 
-const sequelize = new Sequelize('social_network', 'root', 'xxxx', {
-  host: 'localhost',
-  dialect: 'mysql' /* one of 'mysql' | 'mariadb' | 'postgres' | 'mssql' */
+const sequelize = new Sequelize('db_sn_21', 'root', 'mtshust3620', {
+    host: 'localhost',
+    dialect: 'mysql'
 });
-
-(async()=>{
-  try {
-    await sequelize.authenticate();
-    console.log('Connection has been established successfully.');
-  } catch (error) {
-    console.error('Unable to connect to the database:', error);
-  }
-})();
-// export {sequelize};
+module.exports = sequelize;
