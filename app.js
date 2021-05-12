@@ -1,15 +1,22 @@
 const express = require('express');
-// const bodyParser = require('body-parser');
-// var cookieParser = require('cookie-parser');
-const app = express();
+const bodyParser = require('body-parser');
+const routeHome = require('./routes/homepage.route');
 
+// create the app
+const app = express();
+const port = process.env.port || 3000;
+
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+//setting middleware
+app.use(express.static(__dirname + 'public')); //Serves resources from public folder
+app.use(express.static('public'));
+app.set('views', './views')
 app.set('view engine', 'ejs');
 
-app.get('/', (req, res) => {
-  res.send('./views/homepage/homepage.html');
-})
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`)
-})
+app.use('/', routeHome);
+
+app.listen(port, ()=>{
+  console.log(`The server is running at http://localhost:${port}`);
+});
