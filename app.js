@@ -1,3 +1,4 @@
+const compression = require('compression');
 const express = require('express');
 const bodyParser = require('body-parser');
 const routeHome = require('./routes/homepage.route');
@@ -11,6 +12,7 @@ app.use(bodyParser.json());
 //setting middleware
 app.use(express.static(__dirname + 'public')); //Serves resources from public folder
 app.use(express.static('public'));
+app.use(compression());
 app.set('views', './views')
 app.set('view engine', 'ejs');
 

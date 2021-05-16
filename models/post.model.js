@@ -6,7 +6,8 @@ const Post = sequelize.define('post', {
     post_id: {
         type: DataTypes.STRING(45),
         primaryKey: true,
-        allowNull: false
+        allowNull: false,
+        autoIncrement: true
     },
     user_id: {
         type: DataTypes.STRING(45),

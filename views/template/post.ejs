@@ -1,10 +1,10 @@
 <div class="article">
     <div class="article-header">
-        <img src="./avatar.jpg" class="avatar-header" alt="avatar">
+        <img src="/images/avatar.jpg" class="avatar-header" alt="avatar">
         <a href="#" style="margin-left: 2%;"><b>VTV24</b></a>
     </div>
     <div class="images">
-        <img id="image-item" src="./avatar.jpg" alt="image-status">
+        <img id="image-item" src="/images/avatar.jpg" alt="image-status">
     </div>
     <div class="reacts-icons">
         <span>
@@ -14,27 +14,6 @@
                     d="M34.6 6.1c5.7 0 10.4 5.2 10.4 11.5 0 6.8-5.9 11-11.5 16S25 41.3 24 41.9c-1.1-.7-4.7-4-9.5-8.3-5.7-5-11.5-9.2-11.5-16C3 11.3 7.7 6.1 13.4 6.1c4.2 0 6.5 2 8.1 4.3 1.9 2.6 2.2 3.9 2.5 3.9.3 0 .6-1.3 2.5-3.9 1.6-2.3 3.9-4.3 8.1-4.3m0-3c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 5.9 7.6 6.5.5.3 1.1.5 1.6.5.6 0 1.1-.2 1.6-.5 1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z">
                 </path>
             </svg>
-            <script>
-                //clickable for like post
-                // use the AJAX for save in data base
-                function react(){
-                    
-                    let like = document.getElementById("like").getAttribute("fill");
-                    console.log(like);
-                    if(like === "red"){
-                        document.getElementById("like").style.fill= "black";
-                        return;
-                    }else{
-                        document.getElementById("like").style.fill= "red";
-                        return;
-                    }
-                }
-
-                // click to the icon chat -> focus on input comment
-                function comment(){
-                    let comment = document.getElementById("comment");
-                }
-            </script>
         </span>
         <span>
             <svg aria-label="Comment" fill="#262626" height="24" viewBox="0 0 48 48"
@@ -43,6 +22,49 @@
                     d="M47.5 46.1l-2.8-11c1.8-3.3 2.8-7.1 2.8-11.1C47.5 11 37 .5 24 .5S.5 11 .5 24 11 47.5 24 47.5c4 0 7.8-1 11.1-2.8l11 2.8c.8.2 1.6-.6 1.4-1.4zm-3-22.1c0 4-1 7-2.6 10-.2.4-.3.9-.2 1.4l2.1 8.4-8.3-2.1c-.5-.1-1-.1-1.4.2-1.8 1-5.2 2.6-10 2.6-11.4 0-20.6-9.2-20.6-20.5S12.7 3.5 24 3.5 44.5 12.7 44.5 24z"
                     fill-rule="evenodd"></path>
             </svg>
+            <div id="myModal" class="modal">
+
+                <!-- Modal content -->
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <form action="#" method="POST">
+                        <div class="header-newpost">
+                            <h2>Tạo bài viết</h2>
+                        </div>
+                        <hr>
+                        <div class="header-add">
+                            <img src="/images/avatar.jpg" class="avatar-header" alt="avatar">
+                            <a href="#" style="margin-left: 2%;"><b>Jonse Tee</b></a>
+                        </div>
+                        <div class="content-newpost">
+                            <span>
+                                <textarea name="post" id="post" cols="95" placeholder="Bạn đang nghĩ cái đéo gì vậy?"
+                                    rows="5"></textarea>
+                            </span>
+                        </div>
+                        <div class="feature-add">
+                            <span>
+                                <svg aria-label="Emoji" class="_8-yf5 " fill="#262626" height="24" viewBox="0 0 48 48"
+                                    width="24">
+                                    <path
+                                        d="M24 48C10.8 48 0 37.2 0 24S10.8 0 24 0s24 10.8 24 24-10.8 24-24 24zm0-45C12.4 3 3 12.4 3 24s9.4 21 21 21 21-9.4 21-21S35.6 3 24 3z">
+                                    </path>
+                                    <path
+                                        d="M34.9 24c0-1.4-1.1-2.5-2.5-2.5s-2.5 1.1-2.5 2.5 1.1 2.5 2.5 2.5 2.5-1.1 2.5-2.5zm-21.8 0c0-1.4 1.1-2.5 2.5-2.5s2.5 1.1 2.5 2.5-1.1 2.5-2.5 2.5-2.5-1.1-2.5-2.5zM24 37.3c-5.2 0-8-3.5-8.2-3.7-.5-.6-.4-1.6.2-2.1.6-.5 1.6-.4 2.1.2.1.1 2.1 2.5 5.8 2.5 3.7 0 5.8-2.5 5.8-2.5.5-.6 1.5-.7 2.1-.2.6.5.7 1.5.2 2.1 0 .2-2.8 3.7-8 3.7z">
+                                    </path>
+                                </svg>
+                            </span>
+                            <a href="#">Thêm ảnh</a>
+                        </div>
+                        <div>
+                            | Thêm vị trí
+                        </div>
+                        <div class="create-btn">
+                            <input id="btn-submit" type="submit" value="Đăng bài">
+                        </div>
+                    </form>
+                </div>
+            </div>                
         </span>
         <span>
             <a href="/chat">
@@ -55,19 +77,18 @@
         </span>
     </div>
     <div class="time-like">
-        <span><b><%=post.totalLike%></b></span>
-        <div><small><%=date.now() - post.timeCreate%></small></div>
+        <span><b>1 million like</b></span>
+        <div><small>|1 giờ trước!</small></div>
     </div>
     <div class="captions">
         <span>
-            <span><b><%=user.username%></b></span>
+            <span><b>VTV24:</b></span>
+            | j4f
         </span>
         <hr>
     </div>
     <div class="comments">
-        <div>
-            <span><b><%=user.username%></b><%=cmt.content%></span>
-        </div>
+        <%- include('./comment.ejs') %>
         <hr>
     </div>
     <div class="new-comment">
@@ -88,3 +109,4 @@
         </form>
     </div>
 </div>
+<script type="text/javascript" src="/js/post.js"></script>

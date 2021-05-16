@@ -6,7 +6,7 @@ module.exports.getPost = async(req, res)=>{
 }
 
 module.exports.createPost = (req, res)=>{
-    res.send("Create a new post");
+    
 }
 
 module.exports.updatePost = (req, res)=>{
