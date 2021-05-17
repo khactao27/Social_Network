@@ -1,14 +1,27 @@
+
 <div class="header-sticky">
     <div class="logo-header">
-        <a href="#">
+        <a href="/">
             <!-- <img src="#" alt="Intargram">-->
-            <span><b>|S-S-T-T</b></span>
+            <span><b>KTee - Social Network</b></span>
         </a>
     </div>
-    <div class="btn-search">
-        <input type="text" id="input-search" onkeydown="test()" placeholder="Search by name">
+    <div class="popup" onclick="openSeach()">
+        <input type="text" id="input-search" onkeydown="search()" placeholder="Search by name">
+        <span class="popuptext" id="popupSearch">
+            <h3>No results</h3>
+        </span>
     </div>
-
+    <script>
+        function openSeach(){
+            let popupSearch = document.getElementById("popupSearch");
+            popupSearch.classList.toggle("show");
+        }
+        function search(){
+            let popupSearch = document.getElementById("popupSearch");
+            popupSearch.innerHTML = "<h3>Hello</h3>";
+        }
+    </script>
     <div class="icons-header">
         <div id="home-icon">
             <a href="/">
@@ -28,10 +41,16 @@
                 </svg>
             </a>
         </div>
-        <div id="infor-icon">
-            <a href="/user">
-                <img src="/images/avatar.jpg" class="avatar-header" alt="avatar">
-            </a>
+        <div class="popup" onclick="myFunction()">
+            <img src="/images/avatar.jpg" class="avatar-header" alt="avatar">
+            <span class="popuptext" id="user-navigation">
+                <div>
+                    <a href="/user">Tài khoản</a>
+                </div>
+                <div>
+                    <a href="/logout">Đăng xuất</a>
+                </div>
+            </span>
         </div>
     </div>
 </div>

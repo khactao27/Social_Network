@@ -1,5 +1,5 @@
 
 
 module.exports.getHome = async(req, res)=>{
-    res.render('homepage/home');
+    res.render('homepage/home.ejs');
 }
