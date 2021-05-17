@@ -2,6 +2,7 @@ const compression = require('compression');
 const express = require('express');
 const bodyParser = require('body-parser');
 const routeHome = require('./routes/homepage.route');
+let routePost = require('./routes/post.route');
 
 // create the app
 const app = express();
@@ -18,6 +19,7 @@ app.set('view engine', 'ejs');
 
 
 app.use('/', routeHome);
+app.use('/posts', routePost);
 
 app.listen(port, ()=>{
   console.log(`The server is running at http://localhost:${port}`);

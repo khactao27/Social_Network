@@ -3,7 +3,7 @@
 .header-sticky {
     display: flex;
     justify-content: space-between;
-    border-bottom: 2px solid;
+    border-bottom: 1px solid;
     width: 100%;
     text-align: center;
     align-items: center;
