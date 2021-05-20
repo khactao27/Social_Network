@@ -7,5 +7,4 @@ const router = express.Router();
 // router.put('/:id', controller.updatePost);
 router.post('/',controller.createPost);
 //router.delete('/:id', controller.deletePost);
-
 module.exports = router;

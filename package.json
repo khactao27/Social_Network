@@ -18,6 +18,7 @@
   },
   "homepage": "https://gitlab.com/soict-it4409/20202/nhom21/social-network-it4409#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
     "compression": "^1.7.4",
     "cowsay": "^1.4.0",
@@ -30,7 +31,8 @@
     "mysql": "^2.18.1",
     "mysql2": "^2.2.5",
     "path": "^0.12.7",
-    "sequelize": "^6.6.2"
+    "sequelize": "^6.6.2",
+    "validator": "^10.11.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.7"

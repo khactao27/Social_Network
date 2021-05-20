@@ -19,11 +19,11 @@ const User = sequelize.define('user', {
     },
     email:{
         type: DataTypes.STRING(45),
-        allowNull: true
-    },
-    password: {
-        type: DataTypes.STRING(45),
-        allowNull: false
+        allowNull: true,
+        validate:{
+            is: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
+            isEmail: true
+        }
     },
     class_id: {
         type: DataTypes.STRING(45),
@@ -56,6 +56,15 @@ const User = sequelize.define('user', {
     authority: {
         type: DataTypes.STRING(10),
         allowNull: false
+    },
+    username: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+        unique: true
+    },
+    hashedPassword: {
+        type: DataTypes.STRING(64),
+        is: /^[0-9a-f]{64}$/i
     }
 },{
     tableName: 'User',

@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const routeHome = require('./routes/homepage.route');
 let routePost = require('./routes/post.route');
+let routeSearch = require('./routes/search.route');
 
 // create the app
 const app = express();
@@ -20,6 +21,7 @@ app.set('view engine', 'ejs');
 
 app.use('/', routeHome);
 app.use('/posts', routePost);
+app.use('/search', routeSearch);
 
 app.listen(port, ()=>{
   console.log(`The server is running at http://localhost:${port}`);

@@ -1,21 +1,14 @@
 const jwt = require('jsonwebtoken');
 
-module.exports = (req, res, next) => {
+module.exports = (req, res, next)=>{
   try {
     const token = req.headers.authorization.split(' ')[1];
-    const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
-    const userId = decodedToken.userId;
-    if (req.body.userId && req.body.userId !== userId) {
-      throw 'Invalid user ID';
-    } else {
-      next();
-    }
-  } catch {
-    res.status(401).json({
-      error: new Error('Invalid request!')
+    const decode = jwt.verify(token, "Tee_secret");
+    req.userData = decode;
+    next();
+  } catch (error) {
+    return res.status().json({
+      message: "Auth failed"
     });
   }
-};
-
-
-/// The example code for auth
+}

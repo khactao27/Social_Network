@@ -2,6 +2,9 @@ let post = require('../models/post.model');
 var multer  = require('multer');
 const path = require('path');
 let helpers = require('./helpers');
+const fs = require('fs');
+let love = require('../models/love.model');
+let comment = require('../models/comment.model');
 
 
 // define the storage location for our images
@@ -62,11 +65,12 @@ module.exports.createPost = (req, res)=>{
          }catch(error){
              console.error(error);
          }
-         res.send(`You have uploaded this image: <hr/><img src="${'/uploads/'+ path.basename(req.file.path)}" width="500"><hr /><a href="./">Upload another image</a>`);
      });
 }
 module.exports.updatePost = (req, res)=>{
     let post_id = parseInt(req.params.post_id);
+    let caption = req.body.caption;
+    let img_url = req.file.path;
     try {
         
     } catch (error) {
@@ -74,6 +78,33 @@ module.exports.updatePost = (req, res)=>{
     }
 }
 
-module.exports.deletePost = (req, res)=>{
-    res.send("deletePost");
+module.exports.deletePost = async(req, res)=>{
+    let id_post = parseInt(req.params.id_post);
+    try {
+        let post = await post.findByPk(id_post);
+        if(post !== null){
+            // delete the image of post.
+            let url = post.img_url;
+            fs.unlinkSync(`/uploads/${url}`);
+            // delete total love relate with post.
+            love.destroy({
+                where: {
+                    post_id: id_post
+                }
+            });
+            comment.destroy({
+                where: {
+                    post_id: id_post
+                }
+            });
+            
+        }else{
+            res.status(404).end();
+        }
+
+        res.status(201).send({ message: "Image deleted" });
+
+    } catch (e) {
+        res.status(400).send({ message: "Error deleting image!", error: e.toString(), req: req.body });
+    }
 }
