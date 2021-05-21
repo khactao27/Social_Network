@@ -1,45 +1,43 @@
 const sequelize = require('./db');
-const {DataTypes} = require('sequelize');
-const user = require('./user.model');
+const {DataTypes, Model} = require('sequelize');
+const User = require('./user.model');
 
-const Post = sequelize.define('post', {
+const Post = sequelize.define('Post', {
     post_id: {
         type: DataTypes.STRING(45),
-        primaryKey: true,
         allowNull: false,
-        autoIncrement: true
+        primaryKey: true
     },
-    user_id: {
+    user_id:{
         type: DataTypes.STRING(45),
         allowNull: false,
-        references: {
-            model: user,
+        references:{
+            model: User,
             key: 'user_id'
         }
     },
-    caption: {
+    caption:{
         type: DataTypes.STRING(300),
-        allowNull: true
-    },
-    timestamp: {
-        type: DataTypes.DATETIME,
         allowNull: false
     },
-    img_url: {
+    timestamp: {
+        type: DataTypes.DATE,
+        allowNull: false
+    },
+    img_url:{
         type: DataTypes.STRING(300),
         allowNull: false
     },
     num_of_loves: {
-        types: DataTypes.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: false
     },
     num_of_comments: {
-        types: DataTypes.INTEGER,
+        type: DataTypes.INTEGER,
         allowNull: false
     }
 }, {
-    tableName: 'Post',
+    tableName: 'post',
     timestamps: false
 });
-
 module.exports = Post;

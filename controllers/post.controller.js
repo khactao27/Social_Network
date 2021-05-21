@@ -1,11 +1,11 @@
-let post = require('../models/post.model');
+let Post = require('../models/post.model');
 var multer  = require('multer');
 const path = require('path');
 let helpers = require('./helpers');
 const fs = require('fs');
-let love = require('../models/love.model');
-let comment = require('../models/comment.model');
-
+let Love = require('../models/love.model');
+let Comment = require('../models/comment.model');
+let jwt = require('jsonwebtoken');
 
 // define the storage location for our images
 const storage = multer.diskStorage({
@@ -19,20 +19,26 @@ const storage = multer.diskStorage({
 });
 
 module.exports.getPost = async(req, res)=>{
-    let post_id = parseInt(req.params.id);
+    let post_id = req.params.idPost;
     try {
-        let article = await post.findByPk(post_id);
-        if(article !== null){
-            res.set('Content-Type', 'application/json');
-            res.send(JSON.stringify(article, null, 2));
-            res.status(200).end();
-        }
-        else{
-            res.send('404 Not Found!');
-            res.status(404).end();
-        }
+        Post.findAll(post_id).then(result => {
+            if(result.length < 1){
+                return res.status(404).json({
+                    message:"404 Not found page!"
+                }).end();
+            }
+            res.status(200).json({
+                result: result
+            }).end();
+        }).catch(err=>{
+            return res.status(500).json({
+                message: 'Search post failed'
+            }).end()
+        })
     } catch (error) {
-        error.trace();
+        return res.status(500).json({
+            message: 'get post failed'
+        }).end();
     }
 }
 
@@ -63,18 +69,57 @@ module.exports.createPost = (req, res)=>{
              res.redirect('/');
              res.end();
          }catch(error){
-             console.error(error);
+             res.status(500).json({
+                 message: "Create new post failed",
+                 error: error
+             })
          }
      });
 }
-module.exports.updatePost = (req, res)=>{
-    let post_id = parseInt(req.params.post_id);
-    let caption = req.body.caption;
-    let img_url = req.file.path;
+module.exports.updatePost = (req, res, next)=>{
+    let post_id = req.params.postID;
     try {
-        
+        let token = req.headers.authorization.split(' ')[1];
+        let decode = jwt.decode(token);
+        let user_id = decode.user_id;
+        let caption = req.body.caption;
+        let img_url = req.file.path;
+        Post.findByPk(post_id).then(result =>{
+            if(result.length < 1){
+                return res.status(409).json({
+                    message: "Do not have a post want update"
+                }).end();
+            }
+            if(result[0].user_id === user_id){
+                Post.update({caption: caption, img_url: img_url}, {
+                    where: {
+                        post_id: post_id
+                    }
+                }).then(rs =>{
+                    res.status(200).json({
+                        message: 'update post success!'
+                    }).end();
+                }).catch(err =>{
+                    res.status(500).json({
+                        message: 'Update failed'
+                    }).end();
+                })
+            }
+            else{
+                res.status(404).json({
+                    message: '404 : post not found'
+                }).end();
+            }
+        }).catch(error=>{
+            return res.status(500).json({
+                message:'Search failed'
+            }).end();
+        });
     } catch (error) {
-        error.trace();
+        res.status(500).json({
+            message: "Update failed",
+            error: error
+        }).end();
     }
 }
 

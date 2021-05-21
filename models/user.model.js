@@ -1,85 +1,69 @@
 const sequelize = require('./db');
-const {DataTypes} = require('sequelize');
-const classes = require('./class.model'); 
+const {DataTypes, Model} = require('sequelize');
+const Class = require('./class.model'); 
 
-const User = sequelize.define('user', {
+const User = sequelize.define('User', {
     user_id: {
         type: DataTypes.STRING(45),
-        allowNull: false,
         primaryKey: true,
-        autoIncrement: true
+        allowNull: false
     },
-    firstname: {
+    firstname:{
         type: DataTypes.STRING(45),
-        allowNull: true,
+        allowNull: false
     },
     lastname: {
         type: DataTypes.STRING(45),
-        allowNull: true
+        allowNull: false
     },
-    email:{
+    email: {
         type: DataTypes.STRING(45),
-        allowNull: true,
+        allowNull: false,
+        unique: true,
         validate:{
-            is: /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
+            is:/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/,
             isEmail: true
         }
     },
-    class_id: {
+    password:{
+        type: DataTypes.STRING(45),
+        allowNull: false
+    },
+    class_id:{
         type: DataTypes.STRING(45),
         allowNull: false,
         references: {
-            model: classes,
-            key: 'class_id'
+            model: Class,
+            key:'class_id'
         }
     },
-    gender: {
-        type: DataTypes.INTEGER(1),
+    gender:{
+        type: DataTypes.BOOLEAN,
         allowNull: false
     },
-    birthday: {
-        type: DataTypes.DATETIME,
-        allowNull: true
+    birthday:{
+        type: DataTypes.DATE,
+        allowNull: false
     },
-    hometown: {
+    hometown:{
         type: DataTypes.STRING(45),
-        allowNull: true
-    },
-    status: {
-        type: DataTypes.INTEGER(1),
         allowNull: false
     },
-    followers: {
+    status:{
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    authority: {
-        type: DataTypes.STRING(10),
+    followers:{
+        type: DataTypes.INTEGER,
         allowNull: false
     },
-    username: {
-        type: DataTypes.TEXT,
-        allowNull: false,
-        unique: true
-    },
-    hashedPassword: {
-        type: DataTypes.STRING(64),
-        is: /^[0-9a-f]{64}$/i
+    authority:{
+        type: DataTypes.STRING(10),
+        allowNull: false
     }
-},{
-    tableName: 'User',
+}, {
+    tableName: 'user',
     timestamps: false
 });
-User.prototype.isUser = async (user_id, password)=>{
-    let rs = await User.findOne({
-        where:{
-            user_id: user_id,
-            password: password
-        }
-    });
-    if(rs === null){
-        console.log("Incorection Password or Username");
-    }
-}
 
 module.exports = User;

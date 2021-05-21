@@ -1,8 +1,8 @@
 const sequelize = require('./db');
-const {DataTypes} = require('sequelize');
-const school = require('./school.model');
+const {DataTypes, Model} = require('sequelize');
+const School = require('./school.model');
 
-const Classes = sequelize.define('classes', {
+const Class = sequelize.define('Class', {
     class_id: {
         type: DataTypes.STRING(45),
         allowNull: false,
@@ -10,18 +10,19 @@ const Classes = sequelize.define('classes', {
     },
     class_name: {
         type: DataTypes.STRING(45),
-        allowNull: false
+        allowNull: null
     },
-    school_id: {
+    school_id:{
         type: DataTypes.STRING(45),
         allowNull: false,
-        references: {
-            model: school,
+        references:{
+            model: School,
             key: 'school_id'
         }
     }
 }, {
-    tableName: 'Class',
+    tableName: 'class',
     timestamps: false
 });
-module.exports = Classes;
+
+module.exports = Class;

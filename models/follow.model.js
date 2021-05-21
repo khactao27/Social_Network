@@ -1,26 +1,27 @@
 const sequelize = require('./db');
-const {DataTypes} = require('sequelize');
-const user = require('./user.model');
+const {DataTypes, Model} = require('sequelize');
+const User = require('./user.model');
 
-const Comment = sequelize.define('follow', {
-    following_id: {
+const Follow = sequelize.define('Follow', {
+    following_id:{
         type: DataTypes.STRING(45),
         allowNull: false,
-        references: {
-            model: user,
+        references:{
+            model: User,
             key: 'user_id'
         }
     },
-    follower_id: {
+    follower_id:{
         type: DataTypes.STRING(45),
         allowNull: false,
-        references: {
-            model: user,
+        references:{
+            model: User,
             key: 'user_id'
         }
     }
 }, {
-    tableName: 'Follow',
+    tableName: 'follow',
     timestamps: false
 });
+
 module.exports = Follow;

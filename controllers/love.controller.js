@@ -1,23 +1,81 @@
-let love = require('../models/love.model');
+let Love = require('../models/love.model');
+const jwt = require('jsonwebtoken');
+const Post = require('../models/post.model');
 
-module.exports.react = (req, res) => {
-    let userId = parseInt(req.cookies.userId);
-    let postId = parseInt(req.body.postId);
+module.exports.react = (req, res, next) => {
     try {
-        await love.create({ user_id: userId, post_id: postId });
-        res.status(200).end();
+        const token = req.headers.authorization.split(' ')[1];
+        const decode = jwt.decode(token, {json: true});
+        let user_id = decode.user_id;
+        let email = decode.email;
+        let post_id = req.params.idpost;
+        Love.findAll({
+            where:{
+                user_id: user_id,
+                post_id: post_id
+            }
+        }).then(result => {
+            if(result.length >= 1){
+                res.status(409).json({
+                    message: "Love exists"
+                });
+            }
+            Love.create({post_id: post_id, user_id: user_id}).then(temp =>{
+                res.status(201).json({
+                    message: "Like done"
+                });
+            }).catch(err=>{
+                res.status(500).json({
+                    message: "error insert for Love"
+                })
+            });
+        })
     } catch (error) {
-        console.error(error);
+        return res.status(500).json({
+            message: "React failed",
+            error: error
+        });
     }
 }
 
-module.exports.unreact = (req, res) => {
-    let postId = parseInt(req.params.postId);
-    let userid = parseInt(req.cookies.userid);
+module.exports.unreact = (req, res, next) => {
     try {
-        await love.destroy({ where: { post_id: postId, user_id: userid } });
-        res.status(200).end();
+        const token = req.headers.authorization.split(' ')[1];
+        const decode = jwt.decode(token, {json: true});
+        let user_id = decode.user_id;
+        let email = decode.email;
+        let post_id = req.params.idpost;
+        Love.findAll({
+            where:{
+                user_id: user_id,
+                post_id: post_id
+            }
+        }).then(result=>{
+            if(result.length < 1){
+                return req.status(409).json({
+                    message: "Love isnot exists"
+                });
+            }
+            else{
+                Love.destroy({
+                    where:{
+                        post_id: post_id,
+                        user_id: user_id
+                    }
+                }).then(temp=>{
+                    res.status(201).json({
+                        message: "Unlike success"
+                    }).end();
+                }).catch(err=>{
+                    res.status(500).json({
+                        message: 'Unlike failed'
+                    }).end();
+                })
+            }
+        })
     } catch (error) {
-        console.error(error);
+        return res.status(500).json({
+            message: "Unreact failed"
+        })
     }
 }

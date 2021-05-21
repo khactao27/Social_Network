@@ -1,20 +1,27 @@
-let user = require('../models/user.model');
+let User = require('../models/user.model');
+const {Op} = require('sequelize');
 
-module.exports.search = async(req, res)=>{
-    let name = req.query.name;
-    try {
-        const { count, rows } = await Project.findAndCountAll({
-            where: {
-              title: {
-                [Op.like]: `%${name}%`
-              }
-            },
-            offset: 10,
-            limit: 2
-        });
-        console.log(count);
-        console.log(rows);
-    } catch (error) {
-        console.error(error);
-    }
+module.exports.search = (req, res, next)=>{
+  let name = req.query.name;
+  try {
+    User.findAll({
+      where: {
+        user_id: {
+          [Op.like]: `%${name}%`
+        }
+      }
+    }).then(result => {
+      return res.status(200).json({
+        users: result
+      }).end();
+    }).catch(err => {
+      return res.status(500).json({
+        message: 'Search failed 11'
+      }).end();
+    })
+  } catch (error) {
+    res.status(500).json({
+      message: 'Search failed'
+    }).end();
+  }
 }

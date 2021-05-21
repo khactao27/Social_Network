@@ -1,28 +1,29 @@
 const sequelize = require('./db');
-const {DataTypes} = require('sequelize');
-const user = require('./user.model');
-const post = require('./post.model');
+const {DataTypes, Model} = require('sequelize');
+const User = require('./user.model');
+const Post = require('./post.model');
 
-const Love = sequelize.define('love', {
+const Love = sequelize.define('Love', {
     post_id: {
         type: DataTypes.STRING(45),
         allowNull: false,
-        references: {
-            model: post,
+        primaryKey: true,
+        references:{
+            model: Post,
             key: 'post_id'
         }
     },
-
-    user_id: {
+    user_id:{
         type: DataTypes.STRING(45),
         allowNull: false,
-        references: {
-            model: user,
+        primaryKey: true,
+        references:{
+            model: User,
             key: 'user_id'
         }
     }
 }, {
-    tableName: 'Love',
+    tableName:'loves',
     timestamps: false
 });
 

@@ -1,28 +1,27 @@
 const sequelize = require('./db');
-const {DataTypes} = require('sequelize');
-const user = require('./user.model');
-const post = require('./post.model');
+const {DataTypes, Model} = require('sequelize');
+const User = require('./user.model');
+const Post = require('./post.model');
 
-const Comment = sequelize.define('comment', {
-    comment_id: {
+const Comment = sequelize.define('Comment', {
+    comment_id:{
         type: DataTypes.STRING(45),
         primaryKey: true,
-        allowNull: false,
-        autoIncrement: true
+        allowNull: false
     },
     user_id: {
         type: DataTypes.STRING(45),
         allowNull: false,
-        references: {
-            model: user,
+        references:{
+            model: User,
             key: 'user_id'
         }
     },
     post_id: {
         type: DataTypes.STRING(45),
         allowNull: false,
-        references: {
-            model: post,
+        references:{
+            model: Post,
             key: 'post_id'
         }
     },
@@ -31,11 +30,12 @@ const Comment = sequelize.define('comment', {
         allowNull: false
     },
     timestamp: {
-        type: DataTypes.DATETIME,
+        type: DataTypes.DATE,
         allowNull: false
     }
 }, {
-    tableName: 'Comment',
+    tableName: 'comment',
     timestamps: false
 });
+
 module.exports = Comment;
