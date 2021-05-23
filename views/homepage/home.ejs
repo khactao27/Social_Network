@@ -9,11 +9,13 @@
 </head>
 
 <body>
-    <%- include('../template/header.ejs') %>
+    <%- include('../template/header.ejs', {user: user}) %>
     <div class="contents">
-        <%- include('../template/newpost.ejs') %>
+        <%- include('../template/newpost.ejs', {user: user}) %>
         <div class="posts">
-            <%- include('../template/post.ejs') %>
+            <% posts.forEach(function(post){ %>
+               <%- include('../template/post.ejs', {post: post}) %>
+            <% }); %>
         </div>
     </div>
 </body>

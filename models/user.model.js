@@ -60,6 +60,11 @@ const User = sequelize.define('User', {
     authority:{
         type: DataTypes.STRING(10),
         allowNull: false
+    },
+    avatar: {
+        type: DataTypes.STRING(300),
+        allowNull: false,
+        defaultValue: '/avatar/avatar_default.png'
     }
 }, {
     tableName: 'user',

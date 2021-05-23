@@ -1,0 +1,16 @@
+<div class="popup" onclick="openSeach()">
+    <input type="text" id="input-search" onkeydown="search()" placeholder="Search by name">
+    <span class="popuptext" id="popupSearch">
+        <a href="https://www.facebook.com/KTee.27">Tao D.K</a>
+    </span>
+</div>
+<script>
+    function openSeach(){
+        let popupSearch = document.getElementById("popupSearch");
+        popupSearch.classList.toggle("show");
+    }
+    function search(){
+        let popupSearch = document.getElementById("popupSearch");
+        popupSearch.innerHTML = "<h3>Hello</h3>";
+    }
+</script>

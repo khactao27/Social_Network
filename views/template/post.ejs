@@ -88,11 +88,18 @@
         <hr>
     </div>
     <div class="comments">
-        <%- include('./comment.ejs') %>
+        <% if(comments.length > 0) { %>
+            <% comments.forEach(function(comment){%>
+                <%- include('./comment.ejs'), {comment: comment} %>
+            <% }); %>
+        <% } %>
+        <% else { %>
+            <span>No comment</span>
+        <% } %>
         <hr>
     </div>
     <div class="new-comment">
-        <form action="/comments" id="form-cmt" method="POST">
+        <form action="/posts/<%=post.post_id%>/comments" id="form-cmt" method="POST">
             <span>
                 <svg aria-label="Emoji" class="_8-yf5 " fill="#262626" height="24" viewBox="0 0 48 48"
                     width="24">

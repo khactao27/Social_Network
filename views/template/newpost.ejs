@@ -1,9 +1,9 @@
 <div class="new-post">
     <div>
-        <img src="/images/avatar.jpg" class="avatar-header" alt="avatar">
+        <img src=<%=user.avatar %> class="avatar-header" alt="avatar">
     </div>
     <div id="input-post">
-        <input type="text" id="input-post" placeholder="Tee ơi, bạn đang nghĩ gì vậy?">
+        <input type="text" id="input-post" placeholder="bạn đang nghĩ gì vậy?">
     </div>
 </div>
 <div id="myModal" class="modal">
@@ -17,7 +17,7 @@
             </div>
             <hr>
             <div class="header-add">
-                <img src="/images/avatar.jpg" class="avatar-header" alt="avatar">
+                <img src="<%=user.avatar%>" class="avatar-header" alt="avatar">
                 <a href="#" style="margin-left: 2%;"><b>Jonse Tee</b></a>
             </div>
             <div class="content-newpost">

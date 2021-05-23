@@ -74,7 +74,8 @@ router.post('/login', (req, res, next)=>{
                 if(result){
                    const token = jwt.sign({
                         email: user[0].email,
-                        user_id: user[0].user_id
+                        user_id: user[0].user_id,
+                        avatar: user[0].avatar
                     }, "Tee_secret", {
                         expiresIn:"1h"
                     });
