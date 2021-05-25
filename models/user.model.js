@@ -8,11 +8,7 @@ const User = sequelize.define('User', {
         primaryKey: true,
         allowNull: false
     },
-    firstname:{
-        type: DataTypes.STRING(45),
-        allowNull: false
-    },
-    lastname: {
+    fullname:{
         type: DataTypes.STRING(45),
         allowNull: false
     },
@@ -26,7 +22,7 @@ const User = sequelize.define('User', {
         }
     },
     password:{
-        type: DataTypes.STRING(45),
+        type: DataTypes.STRING(500),
         allowNull: false
     },
     class_id:{
@@ -35,11 +31,13 @@ const User = sequelize.define('User', {
         references: {
             model: Class,
             key:'class_id'
-        }
+        },
+        defaultValue: "IT2-01 K63"
     },
     gender:{
         type: DataTypes.BOOLEAN,
-        allowNull: false
+        allowNull: false,
+        defaultValue: 1
     },
     birthday:{
         type: DataTypes.DATE,
@@ -47,19 +45,23 @@ const User = sequelize.define('User', {
     },
     hometown:{
         type: DataTypes.STRING(45),
-        allowNull: false
+        allowNull: false,
+        defaultValue: "Hanoi"
     },
     status:{
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        defaultValue: 1
     },
     followers:{
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: false,
+        defaultValue: 0
     },
     authority:{
         type: DataTypes.STRING(10),
-        allowNull: false
+        allowNull: false,
+        defaultValue: 'user'
     },
     avatar: {
         type: DataTypes.STRING(300),
