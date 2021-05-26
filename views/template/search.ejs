@@ -1,16 +1,52 @@
 <div class="popup" onclick="openSeach()">
-    <input type="text" id="input-search" onkeydown="search()" placeholder="Search by name">
+    <input type="search" id="input-search" onkeydown="liveSearch()" placeholder="Search by name">
     <span class="popuptext" id="popupSearch">
-        <a href="https://www.facebook.com/KTee.27">Tao D.K</a>
+        <ul id="list">
+            <li>Results will be display here.</li>
+        </ul>
     </span>
 </div>
+<script type="text/javascript" src="/js/XMLHttpRequest.js"></script>
 <script>
-    function openSeach(){
+    function openSeach() {
         let popupSearch = document.getElementById("popupSearch");
         popupSearch.classList.toggle("show");
     }
-    function search(){
-        let popupSearch = document.getElementById("popupSearch");
-        popupSearch.innerHTML = "<h3>Hello</h3>";
+
+    function liveSearch() {
+        let name = document.getElementById('input-search').value;
+        let xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.status == 200 && this.readyState == 4) {
+                let ul = document.getElementById("list");
+                let span = document.getElementById('popupSearch');
+                span.removeChild(ul);
+                ul = document.createElement("UL");
+                ul.id = "list";
+                var li, a, text, n;
+
+                let users = JSON.parse(this.responseText);
+                if (users.length == 0) {
+                    li = document.createElement("LI");
+                    li.appendChild(document.createTextNode("No results."));
+                    ul.appendChild(li);
+                } else {
+                    for (var user of users) {
+                        li = document.createElement("LI");
+                        a = document.createElement("a");
+                        a.href = `/users/${user.user_id}`;
+                        n = `${user.fullname}(${user.user_id})`;
+                        text = document.createTextNode(n);
+                        a.appendChild(text);
+                        li.appendChild(a);
+                        ul.appendChild(li);
+                    }
+                }
+                span.appendChild(ul);
+            }
+        }
+        let url = '/search?name=' + name;
+        xhttp.open("GET", url, true);
+        xhttp.send(null);
     }
 </script>

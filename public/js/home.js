@@ -1,4 +1,29 @@
 
+// JS for like/unlike
+function React(element) {
+    var xhttp = new XMLHttpRequest();
+    let post_id = element.previousSibling.innerHTML;
+    if (element.getAtrribute("fill") === "#999999") {
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 201) {
+                element.setAtrribute("fill", "#ed4956");
+            }
+        }
+        let url = `/posts/${post_id}/like`;
+        xhttp.open("POST", url, true);
+        xhttp.send(bull);
+    } else {
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                element.setAtrribute("fill", "#999999");
+            }
+        }
+        let url = `/posts/${post_id}/unlike`;
+        xhttp.open("POST", url, true);
+        xhttp.send(null);
+    }
+}
+// JS for create new post
 //for check input enter?
 let checkEmptyInput = () => {
     var content = document.getElementById("post");

@@ -62,12 +62,22 @@ module.exports.createPost = (req, res)=>{
          }
          let caption = req.body.caption;
          let img_url = '/uploads/'+ path.basename(req.file.path);
-         let user_id = parseInt(req.cookies.idUser);
+         let userData = req.userData;
+         let user_id = userData.user_id;
          try{
-             post.create({user_id: user_id, img_url: img_url, caption: caption, timestamp: Date.now()
-                , number_of_loves: 0, number_of_comments: 0});
-             res.redirect('/');
-             res.end();
+             Post.create({
+                 post_id: user_id + Date.now().toString(),
+                 user_id: user_id,
+                 caption: caption,
+                 timestamp: Date.now(),
+                 img_url: img_url,
+                 num_of_loves: 0,
+                 num_of_comments: 0
+             }).then(result=>{
+                res.redirect('/');
+             }).catch(error=>{
+                 console.log(error);
+             })
          }catch(error){
              res.status(500).json({
                  message: "Create new post failed",
@@ -79,7 +89,7 @@ module.exports.createPost = (req, res)=>{
 module.exports.updatePost = (req, res, next)=>{
     let post_id = req.params.postID;
     try {
-        let token = req.headers.authorization.split(' ')[1];
+        let token = req.cookies.token;
         let decode = jwt.decode(token);
         let user_id = decode.user_id;
         let caption = req.body.caption;

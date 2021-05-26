@@ -17,6 +17,7 @@ div.header-sticky{
     padding: 10px 0;
 }
 .logo-header {
+    font-family: 'Pacifico', cursive;
     flex-grow: 1;
 }
 .btn-search{
@@ -65,6 +66,7 @@ a{
 }
 body{
     margin: 0px;
+    background-color: #e7e3e3;
 }
 
 /* CSS - for contents*/
@@ -74,18 +76,25 @@ body{
     padding-top: 5px;
 }
 .new-post{
-    background-color: #fff;
+    background-color: rgba(231, 243, 238, 0.685);
     display: flex;
     align-items: center;
     border: 1px solid rgba(var(--b6a,219,219,219),1);
     border-radius: 3px;
-    padding: 20px 10%;
+    padding: 10px 5%;
+}
+.div-image{
+    flex-grow: 1;
+    text-align: center;
+}
+.div-post{
+    flex-grow: 4;
+    padding: 15px 0;
 }
 #input-post{
     width: 100%;
     padding: 15px 0;
-    border: 1px solid #fafafa;
-    margin-left: 2%;
+    border: 1px solid rgba(var(--b6a,219,219,219),1);
     border-radius: 8px;
 }
 
@@ -150,7 +159,7 @@ body{
 .article{
     border: 1px solid rgba(var(--b6a,219,219,219),1);
     border-radius: 3px;
-    background-color: #fff;
+    background-color: rgb(240, 240, 240);
     margin: 5px 0;
 }
 .article-header{
@@ -161,35 +170,39 @@ body{
 .images {
 }
 .reacts-icons{
-    padding: 10px 0% 2px 0%;
+    padding: 5px 0% 2px 0%;
 }
 .time-like{
-    padding: 2px 0%;
+    padding: 2px 1%;
+}
+.btn-like{
+    border: none;
 }
 .captions{
-    padding: 2px 0%;
+    padding: 2px 1%;
 }
 .comments {
-    padding: 2px 0%;
+    
 }
 .new-comment {
     padding: 0px 0%;
 }
 
-#image-item{
+.image-item{
     width: 100%;
 }
-#form-cmt {
+.form-cmt {
     display: flex;
     align-items: center;
     background-color: #FFFF;
-    border: 1px solid #fafafa;
-    border-radius: 12px;
+    border: 1px solid #ffffff;
+    border-radius: 0px;
+    padding: 5px;
 }
-#comment{
+.comment{
     border: none;
 }
-#post-btn {
+.post-btn {
     border: none;
     background-color: #FFFF;
     color: blue;
@@ -208,7 +221,7 @@ body{
   /* The actual popup */
   .popup .popuptext {
     visibility: hidden;
-    width: 160px;
+    width: 300px;
     color: #000000;
     background-color: #ebebe0;
     text-align: center;
@@ -218,7 +231,7 @@ body{
     z-index: 1;
     top: 130%;
     left: 50%;
-    margin-left: -80px;
+    margin-left: -150px;
   }
   
   /* Popup arrow */
@@ -279,8 +292,15 @@ body{
     font-size: large;
     color: #FFFF;
 }
-#post {
+.post {
     width: 100%;
     border: 1px solid #d3dcdd;
+    border-radius: 8px;
+}
+
+
+/* input css focus*/
+template:focus{
+    border: 1px solid, #fafafa;
     border-radius: 8px;
 }

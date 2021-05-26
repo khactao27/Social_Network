@@ -1,13 +1,12 @@
 <div class="new-post">
-    <div>
-        <img src=<%=user.avatar %> class="avatar-header" alt="avatar">
+    <div class="div-image">
+        <img src="<%=user.avatar %>" class="avatar-header" alt="avatar">
     </div>
-    <div id="input-post">
-        <input type="text" id="input-post" placeholder="bạn đang nghĩ gì vậy?">
+    <div class="div-post">
+        <input type="text" id="input-post" placeholder="Bạn đang nghĩ gì vậy?">
     </div>
 </div>
 <div id="myModal" class="modal">
-
     <!-- Modal content -->
     <div class="modal-content">
         <span class="close">&times;</span>
@@ -18,7 +17,7 @@
             <hr>
             <div class="header-add">
                 <img src="<%=user.avatar%>" class="avatar-header" alt="avatar">
-                <a href="#" style="margin-left: 2%;"><b>Jonse Tee</b></a>
+                <a href="/users/<%=user.user_id%>" style="margin-left: 2%;"><b><%=user.user_id%></b></a>
             </div>
             <div class="content-newpost">
                 <span>
@@ -44,13 +43,9 @@
             <div style="text-align: center;">
                 <img id="output" width="200" />
             </div>
-            <div>
-                | Thêm vị trí
-            </div>
             <div class="create-btn">
                 <input id="btn-submit" type="submit" value="Đăng bài">
             </div>
         </form>
     </div>
 </div>
-<script type="text/javascript" src="/js/newpost.js"></script>

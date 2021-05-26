@@ -4,10 +4,10 @@ const Post = require('../models/post.model');
 
 module.exports.react = (req, res, next) => {
     try {
-        const token = req.headers.authorization.split(' ')[1];
+        const token = req.cookies.token;
         const decode = jwt.decode(token, {json: true});
         let user_id = decode.user_id;
-        let email = decode.email;
+        //let email = decode.email;
         let post_id = req.params.idpost;
         Love.findAll({
             where:{
@@ -40,7 +40,7 @@ module.exports.react = (req, res, next) => {
 
 module.exports.unreact = (req, res, next) => {
     try {
-        const token = req.headers.authorization.split(' ')[1];
+        const token = req.cookies.token;
         const decode = jwt.decode(token, {json: true});
         let user_id = decode.user_id;
         let email = decode.email;

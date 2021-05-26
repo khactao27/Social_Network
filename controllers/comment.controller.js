@@ -4,7 +4,7 @@ let Comment = require('../models/comment.model');
 module.exports.createComment = (req, res, next)=>{
     try{
         let post_id = req.params.post_id;
-        let token = req.headers.authorization.split(' ')[1];
+        let token = req.cookies.token;
         let decode = jwt.decode(token);
         let user_id = decode.user_id;
         let content = req.body.content;

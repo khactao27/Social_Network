@@ -2,22 +2,25 @@
 <html lang="en">
 
 <head>
-    <title>KTee - Social Network</title>
+    <title>TwentyOneGram</title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="/CSS/home.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@1,300&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <body>
     <%- include('../template/header.ejs', {user: user}) %>
-    <div class="contents">
-        <%- include('../template/newpost.ejs', {user: user}) %>
-        <div class="posts">
-            <% posts.forEach(function(post){ %>
-               <%- include('../template/post.ejs', {post: post}) %>
-            <% }); %>
+        <div class="contents">
+            <%- include('../template/newpost.ejs', {user: user}) %>
+            <div class="posts">
+                <% posts.forEach(function(post){ %>
+                   <%- include('../template/post.ejs', {post: post}) %>
+                <% }); %>
+            </div>    
         </div>
-    </div>
+    <script type="text/javascript" src="/js/home.js"></script>
 </body>
 
 </html>

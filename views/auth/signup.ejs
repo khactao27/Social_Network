@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/CSS/register.css">
+  </head>
+  <body>
+    <div id="main">
+      <div class="container">
+        <div class="form-data">
+          <form method="POST" action="/users/signup">
+            <div class="header">
+              <h1>Đăng kí</h1>
+            </div>
+              <input type="email" id="email" name="email" placeholder="Địa chỉ email">
+              <input type="text" id="fullname" name="fullname" placeholder="Tên đầy đủ">
+              <input type="date" id="birthday" name="birthday" placeholder="Ngày sinh">
+              <input type="text" id="account" name="user_id" placeholder="Tên người dùng">
+              <input type="password" id="pass" name="password" placeholder="Mật khẩu">
+              <button class="form-btn" type="submit">Đăng ký</button>
+        </form>
+          <div class="option">
+            Bạn có tài khoản? <a href="/login">Đăng nhập</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html> 

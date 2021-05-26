@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="/CSS/login.css">
+  </head>
+  <body>
+    <div id="main">
+      <div class="container">
+        <div class="form-data">
+          <span>
+            <div class="header">
+              <h1>TwentyOneGram</h1>
+            </div>
+            <input type="email" id="email" placeholder="Số điện thoại, tên người dùng hoặc email">
+            <input type="password" id="password" placeholder="Mật khẩu">
+            <button class="form-btn" onclick="login()">Đăng nhập</button>
+            <a class="forgot" href="#">Quên mật khẩu?</a>
+        </span>
+          <script type="text/javascript">
+            function login(){
+                let email = document.getElementById("email").value;
+                let password = document.getElementById("password").value;
+                let xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        alert("Đăng nhập thành công !")
+                        location.href = '/';
+                    }
+                    else if(this.status == 401 || this.status == 500){
+                        return alert("Đăng nhập bại: Vui lòng kiểm tra tài khoản hoặc mật khẩu");
+                    }
+                };
+                xhttp.open("POST", "/users/login", true);
+                xhttp.setRequestHeader("Content-Type", "application/json");
+                let data = {
+                    email: email,
+                    password: password
+                }
+                xhttp.send(JSON.stringify(data));
+            }
+          </script>
+          <div class="new">
+            Bạn không có tài khoản? <a href="/signup">Đăng ký</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

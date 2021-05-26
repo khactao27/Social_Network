@@ -3,6 +3,7 @@ const {Op} = require('sequelize');
 
 module.exports.search = (req, res, next)=>{
   let name = req.query.name;
+
   try {
     User.findAll({
       where: {
@@ -11,12 +12,10 @@ module.exports.search = (req, res, next)=>{
         }
       }
     }).then(result => {
-      return res.status(200).json({
-        users: result
-      }).end();
+      return res.status(200).json(result).end();
     }).catch(err => {
       return res.status(500).json({
-        message: 'Search failed 11'
+        message: 'Search failed'
       }).end();
     })
   } catch (error) {
