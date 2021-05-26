@@ -10,8 +10,8 @@ router.get('/:id', controller.getPost);
 router.put('/:id', controller.updatePost);
 router.post('/', Auth.Auth, controller.createPost);
 router.delete('/:id', controller.deletePost);
-router.post('/:id/like', love.react);
-router.post('/:id/unlike', love.unreact);
-router.post('/:id/comments', comment.createComment);
+router.post('/:idpost/like',Auth.Auth, love.react);
+router.post('/:idpost/unlike',Auth.Auth, love.unreact);
+router.post('/:idpost/comments', comment.createComment);
 
 module.exports = router;

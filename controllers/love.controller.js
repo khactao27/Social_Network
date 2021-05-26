@@ -1,13 +1,9 @@
 let Love = require('../models/love.model');
-const jwt = require('jsonwebtoken');
 const Post = require('../models/post.model');
 
 module.exports.react = (req, res, next) => {
     try {
-        const token = req.cookies.token;
-        const decode = jwt.decode(token, {json: true});
-        let user_id = decode.user_id;
-        //let email = decode.email;
+        let user_id = req.userData.user_id;
         let post_id = req.params.idpost;
         Love.findAll({
             where:{
@@ -21,9 +17,19 @@ module.exports.react = (req, res, next) => {
                 });
             }
             Love.create({post_id: post_id, user_id: user_id}).then(temp =>{
-                res.status(201).json({
-                    message: "Like done"
-                });
+                Post.findByPk(post_id).then(post =>{
+                    let num_of_loves = post.num_of_loves;
+                    num_of_loves++;
+                    Post.update({num_of_loves: num_of_loves}, {
+                        where: {
+                            post_id: post_id
+                        }
+                    }).then(tmp =>{
+                        res.status(201).json({
+                            message: "Like done"
+                        }).end();
+                    })
+                })
             }).catch(err=>{
                 res.status(500).json({
                     message: "error insert for Love"
@@ -40,10 +46,7 @@ module.exports.react = (req, res, next) => {
 
 module.exports.unreact = (req, res, next) => {
     try {
-        const token = req.cookies.token;
-        const decode = jwt.decode(token, {json: true});
-        let user_id = decode.user_id;
-        let email = decode.email;
+        let user_id = req.userData.user_id;
         let post_id = req.params.idpost;
         Love.findAll({
             where:{
@@ -63,9 +66,19 @@ module.exports.unreact = (req, res, next) => {
                         user_id: user_id
                     }
                 }).then(temp=>{
-                    res.status(201).json({
-                        message: "Unlike success"
-                    }).end();
+                    Post.findByPk(post_id).then(post =>{
+                        let num_of_loves = post.num_of_loves;
+                        num_of_loves--;
+                        Post.update({num_of_loves: num_of_loves}, {
+                            where: {
+                                post_id: post_id
+                            }
+                        }).then(tmp =>{
+                            res.status(201).json({
+                                message: "Unlike success"
+                            }).end();
+                        })
+                    })
                 }).catch(err=>{
                     res.status(500).json({
                         message: 'Unlike failed'

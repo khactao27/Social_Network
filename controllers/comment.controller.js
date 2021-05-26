@@ -3,11 +3,9 @@ let Comment = require('../models/comment.model');
 
 module.exports.createComment = (req, res, next)=>{
     try{
-        let post_id = req.params.post_id;
-        let token = req.cookies.token;
-        let decode = jwt.decode(token);
-        let user_id = decode.user_id;
+        let user_id = req.userData.user_id;
         let content = req.body.content;
+        let post_id = req.params.idpost;
         Comment.create({comment_id: user_id + Date.now(), user_id: user_id, post_id: post_id, content: content, timestamp: Date.now()})
         .then(result=>{
             res.status(201).json({

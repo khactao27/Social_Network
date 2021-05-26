@@ -1,10 +1,6 @@
-const jwt = require('jsonwebtoken');
-const Post = require('../controllers/post.controller');
-const User = require('../models/user.model');
-const Follow = require('../models/follow.model');
 const sequelize = require('../models/db');
-
-const {Op, QueryTypes} = require('sequelize');
+const Love = require('../models/love.model');
+const {Op, QueryTypes, DataTypes} = require('sequelize');
 
 module.exports.getLogin = (req, res, next)=>{
     res.clearCookie('token');
@@ -17,13 +13,19 @@ module.exports.getHome = async (req, res, next)=>{
     try{
         let user_id = req.userData.user_id;
         let avatar = req.userData.avatar;
+        let arrLoves =[];
+        let postLoves = await sequelize.query(`SELECT post_id FROM loves WHERE user_id="${user_id}"`, {type:QueryTypes.SELECT});
+        for(let love of postLoves){
+            arrLoves.push(love.post_id);
+        }
         let posts = await sequelize.query(`SELECT * FROM post, follow, user WHERE post.user_id = user.user_id AND user.user_id = follow.follower_id AND follow.following_id = '${user_id}'`, {type: QueryTypes.SELECT});
         res.render('../views/homepage/home.ejs', {
             posts: posts,
             user: {
                 user_id: user_id,
                 avatar: avatar
-            }
+            },
+            arrLoves: arrLoves
         })
     }catch(error){
         res.status(500).json({

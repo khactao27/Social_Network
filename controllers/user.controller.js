@@ -2,6 +2,7 @@ let jwt = require('jsonwebtoken');
 let User = require('../models/user.model');
 let Post = require('../models/post.model');
 const bcrybt = require('bcrypt');
+const Follow = require('../models/follow.model');
 
 module.exports.getUser = async(req, res, next)=>{
     try {
@@ -69,9 +70,6 @@ module.exports.login = async(req, res, next)=>{
                         token: token
                     }).end();
                 }
-                return res.status(401).json({
-                    message: "Auth Failed"
-                });
             });
         }
     })
@@ -101,6 +99,7 @@ module.exports.signup = (req, res, next)=>{
                         error: err
                     });
                 }else{
+                    Follow.create({follower_id: req.body.user_id, following_id: req.body.user_id});
                     const user = User.build({
                         fullname: req.body.fullname,
                         email: req.body.email,

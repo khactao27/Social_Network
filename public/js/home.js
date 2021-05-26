@@ -2,23 +2,32 @@
 // JS for like/unlike
 function React(element) {
     var xhttp = new XMLHttpRequest();
-    let post_id = element.previousSibling.innerHTML;
-    if (element.getAtrribute("fill") === "#999999") {
+    let post_id = element.getAttribute("name");
+    let span = element.parentNode.nextElementSibling.firstElementChild;
+    let num_of_loves = parseInt(span.getAttribute("name"));
+    console.log(parent);
+    if (element.getAttribute("fill") === "#999999") {
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 201) {
-                element.setAtrribute("fill", "#ed4956");
+                element.setAttribute("fill", "#ed4956");
+                num_of_loves++;
+                span.innerHTML = num_of_loves + " Like";
+                span.setAttribute("name", num_of_loves);
             }
         }
-        let url = `/posts/${post_id}/like`;
+        let url = "/posts/" + post_id + "/like";
         xhttp.open("POST", url, true);
-        xhttp.send(bull);
+        xhttp.send(null);
     } else {
         xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                element.setAtrribute("fill", "#999999");
+            if (this.readyState == 4 && this.status == 201) {
+                element.setAttribute("fill", "#999999");
+                num_of_loves--;
+                span.innerHTML = num_of_loves + " Like";
+                span.setAttribute("name", num_of_loves);
             }
         }
-        let url = `/posts/${post_id}/unlike`;
+        let url = "/posts/" + post_id + "/unlike";
         xhttp.open("POST", url, true);
         xhttp.send(null);
     }
@@ -59,3 +68,33 @@ var loadFile = function (event) {
     image.src = URL.createObjectURL(event.target.files[0]);
     document.getElementById('label_file').innerHTML = "Change image";
 };
+
+
+function Comment(element) {
+    var xhttp = new XMLHttpRequest();
+    let content = element.previousElementSibling.value;
+    let post_id = element.getAttribute("name");
+    let comments = element.parentElement.previousElementSibling;
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 201) {
+            let comment = JSON.parse(this.responseText);
+            let user_id = comment.user_id;
+            let cmt = comment.text;
+            let span = document.createElement("span");
+            let div = document.createElement("div");
+            let txt = document.createTextNode(`${user_id}:${cmt}`);
+            span.appendChild(txt);
+            div.appendChild(span);
+            comments.appendChild(div);
+            element.previousElementSibling.value ="";
+        }
+    }
+    let url = `/posts/${post_id}/comments`;
+    xhttp.open('POST', url, true);
+    xhttp.setRequestHeader("Content-Type", "application/json");
+    let data = {
+        content: content,
+        post_id: post_id
+    }
+    xhttp.send(JSON.stringify(data));
+}

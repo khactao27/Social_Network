@@ -16,7 +16,7 @@
             <%- include('../template/newpost.ejs', {user: user}) %>
             <div class="posts">
                 <% posts.forEach(function(post){ %>
-                   <%- include('../template/post.ejs', {post: post}) %>
+                   <%- include('../template/post.ejs', {post: post, arrLoves: arrLoves}) %>
                 <% }); %>
             </div>    
         </div>

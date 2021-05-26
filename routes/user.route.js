@@ -9,6 +9,6 @@ router.post('/signup', userController.signup);
 router.post('/login', userController.login);
 router.post('/:id/follow', auth.Auth, userFollow.follow);
 router.post('/:id/unfollow', auth.Auth, userFollow.unfollow);
-router.get('/:id', userController.findUser);
+router.get('/:id',auth.Auth, userController.findUser);
 
 module.exports = router;
