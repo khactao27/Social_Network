@@ -82,8 +82,12 @@ function Comment(element) {
             let cmt = comment.text;
             let span = document.createElement("span");
             let div = document.createElement("div");
-            let txt = document.createTextNode(`${user_id}:${cmt}`);
-            span.appendChild(txt);
+            let txt = document.createTextNode(`${user_id}`);
+            let a = document.createElement("a");
+            a.href =`/users/${user_id}`;
+            a.appendChild(txt);
+            span.appendChild(a);
+            span.appendChild(document.createTextNode(`: ${cmt}`));
             div.appendChild(span);
             comments.appendChild(div);
             element.previousElementSibling.value ="";
@@ -96,5 +100,7 @@ function Comment(element) {
         content: content,
         post_id: post_id
     }
+    console.log(url);
+    console.log(data);
     xhttp.send(JSON.stringify(data));
 }

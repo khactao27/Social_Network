@@ -12,6 +12,6 @@ router.post('/', Auth.Auth, controller.createPost);
 router.delete('/:id', controller.deletePost);
 router.post('/:idpost/like',Auth.Auth, love.react);
 router.post('/:idpost/unlike',Auth.Auth, love.unreact);
-router.post('/:idpost/comments', comment.createComment);
+router.post('/:idpost/comments',Auth.Auth, comment.createComment);
 
 module.exports = router;
