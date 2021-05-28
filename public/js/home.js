@@ -73,6 +73,7 @@ var loadFile = function (event) {
 function Comment(element) {
     var xhttp = new XMLHttpRequest();
     let content = element.previousElementSibling.value;
+    if(content == "") return;
     let post_id = element.getAttribute("name");
     let comments = element.parentElement.previousElementSibling;
     xhttp.onreadystatechange = function () {

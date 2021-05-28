@@ -1,6 +1,7 @@
 const sequelize = require('../models/db');
 const Love = require('../models/love.model');
 const {Op, QueryTypes, DataTypes} = require('sequelize');
+const Comment = require('../models/comment.model');
 
 module.exports.getLogin = (req, res, next)=>{
     res.clearCookie('token');
@@ -18,6 +19,7 @@ module.exports.getHome = async (req, res, next)=>{
         for(let love of postLoves){
             arrLoves.push(love.post_id);
         }
+        let comments = await Comment.findAll();
         let posts = await sequelize.query(`SELECT * FROM post, follow, user WHERE post.user_id = user.user_id AND user.user_id = follow.follower_id AND follow.following_id = '${user_id}'`, {type: QueryTypes.SELECT});
         res.render('../views/homepage/home.ejs', {
             posts: posts,
@@ -25,7 +27,8 @@ module.exports.getHome = async (req, res, next)=>{
                 user_id: user_id,
                 avatar: avatar
             },
-            arrLoves: arrLoves
+            arrLoves: arrLoves,
+            comments: comments
         })
     }catch(error){
         res.status(500).json({

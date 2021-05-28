@@ -3,6 +3,7 @@ let User = require('../models/user.model');
 let Post = require('../models/post.model');
 const bcrybt = require('bcrypt');
 const Follow = require('../models/follow.model');
+const sequelize = require('../models/db');
 
 module.exports.getUser = async(req, res, next)=>{
     try {
@@ -99,7 +100,6 @@ module.exports.signup = (req, res, next)=>{
                         error: err
                     });
                 }else{
-                    Follow.create({follower_id: req.body.user_id, following_id: req.body.user_id});
                     const user = User.build({
                         fullname: req.body.fullname,
                         email: req.body.email,
@@ -108,9 +108,9 @@ module.exports.signup = (req, res, next)=>{
                         password: hash
                     });
                     user.save().then(result => {
-                        res.status(201).json({
-                            message: "User create"
-                        });
+                        // Follow.create({follower_id: req.body.user_id, following_id: req.body.user_id});
+                        sequelize.query(`INSERT INTO follow (following_id, follower_id) VALUES ('${req.body.user_id}', '${req.body.user_id}')`);
+                        res.redirect('/login');
                     })
                     .catch(err=>{
                         console.log(err);

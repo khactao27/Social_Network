@@ -55,7 +55,7 @@ module.exports.unreact = (req, res, next) => {
             }
         }).then(result=>{
             if(result.length < 1){
-                return req.status(409).json({
+                return res.status(409).json({
                     message: "Love isnot exists"
                 });
             }

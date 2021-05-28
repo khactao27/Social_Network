@@ -62,7 +62,10 @@
     </div>
     <hr>
     <div class="comments">
-        <p>No comment</p>
+        <% comments.forEach(function(comment) { %>
+            <% if(comment.post_id == post.post_id) { %>
+                <%-include('./comment.ejs', {comment: comment})%>
+        <% } } ) %>
     </div>
     <div class="new-comment form-cmt">
         <span>
