@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://localhost:3000/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>TwentyOneGram</title>
+    
+    <link rel="stylesheet" type="text/css" href="./TwentyOneGram_files/home.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com/">
+    <link href="./TwentyOneGram_files/css2" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1012.0" data-gr-ext-installed="">
+    
+<div class="header-sticky">
+    <div class="logo-header">
+        <a href="http://localhost:3000/">
+            <!-- <img src="#" alt="Intargram">-->
+            <span><b>TwentyOneGram</b></span>
+        </a>
+    </div>
+    <div class="popup" onclick="openSearch()">
+    <input type="search" id="input-search" onkeydown="liveSearch()" placeholder="Search by name">
+    <span class="popuptext" id="popupSearch">
+        <ul id="list">
+            <li>Kết quả tìm kiếm sẻ hiển thị ở đây</li>
+        </ul>
+    </span>
+</div>
+    <div class="icons-header">
+        <div id="home-icon">
+            <a href="http://localhost:3000/">
+                <svg aria-label="Home" fill="#262626" height="22" viewBox="0 0 48 48" width="22">
+                    <path d="M45.5 48H30.1c-.8 0-1.5-.7-1.5-1.5V34.2c0-2.6-2.1-4.6-4.6-4.6s-4.6 
+                        2.1-4.6 4.6v12.3c0 .8-.7 1.5-1.5 1.5H2.5c-.8 0-1.5-.7-1.5-1.5V23c0-.4.2-.8.4-1.1L22.9.4c.6-.6 
+                        1.6-.6 2.1 0l21.5 21.5c.3.3.4.7.4 1.1v23.5c.1.8-.6 1.5-1.4 1.5z">
+                    </path>
+                </svg>
+            </a>
+        </div>
+        <div id="chat-icon">
+            <a href="http://localhost:3000/chat">
+                <svg aria-label="Direct" fill="#262626" height="22" viewBox="0 0 48 48" width="22">
+                    <path d="M47.8 3.8c-.3-.5-.8-.8-1.3-.8h-45C.9 3.1.3 3.5.1 4S0 5.2.4 5.7l15.9 
+                        15.6 5.5 22.6c.1.6.6 1 1.2 1.1h.2c.5 0 1-.3 1.3-.7l23.2-39c.4-.4.4-1 
+                        .1-1.5zM5.2 6.1h35.5L18 18.7 5.2 6.1zm18.7 33.6l-4.4-18.4L42.4 8.6 23.9 39.7z">
+                    </path>
+                </svg>
+            </a>
+        </div>
+        <div class="popup" onclick="myFunction()">
+            <img src="./TwentyOneGram_files/avatar_default.png" class="avatar-header" alt="avatar">
+            <span class="popuptext" id="user-navigation">
+                <div>
+                    <img style="with: 20px; height: 20px;" src="./TwentyOneGram_files/profile.png" alt="logo_profile">
+                    <a href="http://localhost:3000/user">Tài khoản</a>
+                </div>
+                <div>
+                    <img style="with: 20px; height: 20px;" src="./TwentyOneGram_files/logout.png" alt="logo_profile">
+                    <a href="http://localhost:3000/login">Đăng xuất</a>
+                </div>
+            </span>
+        </div>
+    </div>
+</div>
+        <div class="contents">
+            <div class="new-post">
+    <div class="div-image">
+        <img src="./TwentyOneGram_files/avatar_default.png" class="avatar-header" alt="avatar">
+    </div>
+    <div class="div-post">
+        <input type="text" id="input-post" placeholder="Bạn đang nghĩ gì vậy?">
+    </div>
+</div>
+<div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close">×</span>
+        <form action="http://localhost:3000/posts" method="POST" enctype="multipart/form-data">
+            <div class="header-newpost">
+                <h2>Tạo bài viết</h2>
+            </div>
+            <hr>
+            <div class="header-add">
+                <img src="./TwentyOneGram_files/avatar_default.png" class="avatar-header" alt="avatar">
+                <a href="http://localhost:3000/users/taodk" style="margin-left: 2%;"><b>taodk</b></a>
+            </div>
+            <div class="content-newpost">
+                <span>
+                    <textarea name="caption" id="post" cols="95" placeholder="Bạn đang nghĩ gì vậy?" rows="5"></textarea>
+                </span>
+            </div>
+            <div class="feature-add">
+                <span>
+                    <svg aria-label="Emoji" class="_8-yf5 " fill="#262626" height="24" viewBox="0 0 48 48" width="24">
+                        <path d="M24 48C10.8 48 0 37.2 0 24S10.8 0 24 0s24 10.8 24 24-10.8 24-24 24zm0-45C12.4 3 3 12.4 3 24s9.4 21 21 21 21-9.4 21-21S35.6 3 24 3z">
+                        </path>
+                        <path d="M34.9 24c0-1.4-1.1-2.5-2.5-2.5s-2.5 1.1-2.5 2.5 1.1 2.5 2.5 2.5 2.5-1.1 2.5-2.5zm-21.8 0c0-1.4 1.1-2.5 2.5-2.5s2.5 1.1 2.5 2.5-1.1 2.5-2.5 2.5-2.5-1.1-2.5-2.5zM24 37.3c-5.2 0-8-3.5-8.2-3.7-.5-.6-.4-1.6.2-2.1.6-.5 1.6-.4 2.1.2.1.1 2.1 2.5 5.8 2.5 3.7 0 5.8-2.5 5.8-2.5.5-.6 1.5-.7 2.1-.2.6.5.7 1.5.2 2.1 0 .2-2.8 3.7-8 3.7z">
+                        </path>
+                    </svg>
+                </span>
+                <input type="file" accept="image/*" name="image_post" id="file" onchange="loadFile(event)" style="display: none;"><p></p>
+                <p><label for="file" id="label_file" style="cursor: pointer;">Thêm ảnh</label></p>
+            </div>
+            <div style="text-align: center;">
+                <img id="output" width="200">
+            </div>
+            <div class="create-btn">
+                <input id="btn-submit" type="submit" value="Đăng bài">
+            </div>
+        </form>
+    </div>
+</div>
+            <div class="posts">
+                
+                   <div class="article">
+    <div class="article-header">
+        <img src="./TwentyOneGram_files/avatar_default.png" class="avatar-header" alt="avatar">
+        <a href="http://localhost:3000/users/taodk" style="margin-left: 2%;"><b>
+                taodk
+            </b></a>
+    </div>
+    <div class="images">
+        <img class="image-item" src="./TwentyOneGram_files/image_post-1622165912862.jpg" alt="image-status">
+    </div>
+    <div class="reacts-icons">
+        
+            <svg fill="#999999" name="taodk1622165912865" onclick="React(this)" height="24" viewBox="0 0 48 48" width="24">
+                <path d="M34.6 3.1c-4.5 0-7.9 1.8-10.6 5.6-2.7-3.7-6.1-5.5-10.6-5.5C6 3.1 
+                        0 9.6 0 17.6c0 7.3 5.4 12 10.6 16.5.6.5 1.3 1.1 1.9 1.7l2.3 2c4.4 3.9 6.6 
+                        5.9 7.6 6.5.5.3 1.1.5 1.6.5s1.1-.2 1.6-.5c1-.6 2.8-2.2 7.8-6.8l2-1.8c.7-.6 
+                        1.3-1.2 2-1.7C42.7 29.6 48 25 48 17.6c0-8-6-14.5-13.4-14.5z">
+                </path>
+            </svg>
+            
+            <span>
+                <svg aria-label="Comment" fill="#262626" height="24" viewBox="0 0 48 48" width="24">
+                    <path clip-rule="evenodd" d="M47.5 46.1l-2.8-11c1.8-3.3 2.8-7.1 2.8-11.1C47.5 11 37 .5 24 
+                    .5S.5 11 .5 24 11 47.5 24 47.5c4 0 7.8-1 11.1-2.8l11 2.8c.8.2 
+                    1.6-.6 1.4-1.4zm-3-22.1c0 4-1 7-2.6 10-.2.4-.3.9-.2 1.4l2.1 
+                    8.4-8.3-2.1c-.5-.1-1-.1-1.4.2-1.8 1-5.2 2.6-10 2.6-11.4 
+                    0-20.6-9.2-20.6-20.5S12.7 3.5 24 3.5 44.5 12.7 44.5 24z" fill-rule="evenodd">
+                    </path>
+                </svg>
+            </span>
+            <span>
+                <a href="http://localhost:3000/chat">
+                    <!--fix chat sau-->
+                    <svg aria-label="Direct" fill="#262626" height="22" viewBox="0 0 48 48" width="22">
+                        <path d="M47.8 3.8c-.3-.5-.8-.8-1.3-.8h-45C.9 3.1.3 3.5.1 4S0 5.2.4 
+                        5.7l15.9 15.6 5.5 22.6c.1.6.6 1 1.2 1.1h.2c.5 0 1-.3 1.3-.7l23.2-39c.4-.4.4-1 
+                        .1-1.5zM5.2 6.1h35.5L18 18.7 5.2 6.1zm18.7 33.6l-4.4-18.4L42.4 8.6 23.9 39.7z">
+                        </path>
+                    </svg>
+                </a>
+        </span>
+    </div>
+    <div class="time-like">
+        <span name="0">0 Like</span>
+        <small>Fri May 28 2021 08:38:32 GMT+0700 (Indochina Time)</small>
+    </div>
+    <div class="captions">
+        <span>
+            <a href="http://localhost:3000/users/taodk">taodk:</a>
+            Group - 21: Hôm nay trời đẹp thế nhỏooooooo! :))
+        </span>
+    </div>
+    <hr>
+    <div class="comments">
+        
+            
+                <div>
+    <span><a href="http://localhost:3000/users/taodk">taodk</a>: Hahaha</span>
+</div>
+        
+    </div>
+    <div class="new-comment form-cmt">
+        <span>
+            <svg aria-label="Emoji" class="_8-yf5 " fill="#262626" height="24" viewBox="0 0 48 48" width="24">
+                <path d="M24 48C10.8 48 0 37.2 0 24S10.8 0 24 0s24 10.8 24 24-10.8 24-24 24zm0-45C12.4 
+                        3 3 12.4 3 24s9.4 21 21 21 21-9.4 21-21S35.6 3 24 3z">
+                </path>
+                <path d="M34.9 24c0-1.4-1.1-2.5-2.5-2.5s-2.5 1.1-2.5 2.5 1.1 2.5 2.5 2.5 2.5-1.1
+                         2.5-2.5zm-21.8 0c0-1.4 1.1-2.5 2.5-2.5s2.5 1.1 2.5 2.5-1.1 2.5-2.5 
+                         2.5-2.5-1.1-2.5-2.5zM24 37.3c-5.2 0-8-3.5-8.2-3.7-.5-.6-.4-1.6.2-2.1.6-.5 
+                         1.6-.4 2.1.2.1.1 2.1 2.5 5.8 2.5 3.7 0 5.8-2.5 5.8-2.5.5-.6 1.5-.7 2.1-.2.6.5.7 
+                         1.5.2 2.1 0 .2-2.8 3.7-8 3.7z">
+                </path>
+            </svg>
+        </span>
+        <textarea name="comment" class="comment" placeholder="Add a comment" cols="85" rows="2"></textarea>
+        <button class="post-btn" name="taodk1622165912865" onclick="Comment(this)">Post</button>
+    </div>
+</div>
+
+                
+            </div>    
+        </div>
+    <script type="text/javascript" src="./TwentyOneGram_files/home.js.download"></script>
+
+
+</body></html>
