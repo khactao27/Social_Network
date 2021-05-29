@@ -5,7 +5,6 @@ function React(element) {
     let post_id = element.getAttribute("name");
     let span = element.parentNode.nextElementSibling.firstElementChild;
     let num_of_loves = parseInt(span.getAttribute("name"));
-    console.log(parent);
     if (element.getAttribute("fill") === "#999999") {
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 201) {
@@ -149,4 +148,8 @@ function liveSearch() {
 function myFunction() {
     var popup = document.getElementById("user-navigation");
     popup.classList.toggle("show");
+}
+
+function Chat(element){
+    alert("Tính năng này đăng được phát triển, vui lòng thử lại sau =))");
 }

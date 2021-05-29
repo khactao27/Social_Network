@@ -1,0 +1,62 @@
+
+<div>
+    <div id="userDetail" class="dialog dialog-hide">
+      <div class="model"></div>
+      <div class="dialog-content">
+        <div class="dialog-header">
+          <div class="dialog-title">Chỉnh sửa trang cá nhân</div>
+          <div class="dialog-close-button" id="closebtn" onclick="CloseModal()">&#x2715;</div>
+        </div>
+        <br />
+        <div class="dialog-body">
+          <div class="inf-avatar">
+            <div class="avatar">
+              <img class="avatar" src="<%=user.avatar%>" alt="" />
+            </div>
+            <label class="addAva" id="addAVA">
+              Chọn ảnh...
+              <input id="newAva" type="file" style="visibility: hidden" />
+            </label>
+          </div>
+          <div class="inf-profile">
+            <label>Tên tài khoản: </label>
+            <input id="txtIdName" type="text" class="txtId" readonly/>
+            <label class="lbfullName">Họ tên:</label>
+            <input id="txtFullName" type="text" class="txtFullName" />
+            <br />
+            <br />
+            <label>Mã Lớp:</label>
+            <input id="txtIdClass" type="text" class="txtIdClass" />
+            <label class="lbDOB">Ngày sinh:</label>
+            <input id="txtDOB" type="date" class="txtDOB" />
+            <br />
+            <br />
+            <label>Giới tính:&emsp;</label>
+            <input type="radio" id="male" name="gender" value="Nam" />
+            <label for="male">Nam &emsp;&emsp;&emsp;&emsp;</label>
+            <input type="radio" id="female" name="gender" value="Nữ" />
+            <label for="female">Nữ &emsp;&emsp;&emsp;&emsp;</label>
+            <input type="radio" id="other" name="gender" value="Khác" />
+            <label for="other">Khác &emsp;</label>
+            <br />
+            <br />
+            <label>Quê Quán:</label>
+            <input id="txtHometown" type="text" class="txtHometown" />
+            <label class="lbRelation">Tình Trạng:</label>
+            <select name="relation" id="relation-select">
+              <option value="alone">Độc thân</option>
+              <option value="in-relationship">Đang trong mối quan hệ</option>
+              <option value="married">Đã kết hôn</option>
+            </select>
+          </div>
+        </div>
+        <div class="dialog-footer">
+          <button id="btnSave" class="btn-default">Lưu</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/js/profile.js"></script>
+  
+  

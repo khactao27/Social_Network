@@ -1,0 +1,175 @@
+/* INPUT */
+
+input[type="text"] {
+    height: 35px;
+    width: 200px;
+    border: 1px solid #bbbbbb;
+    border-radius: 4px;
+    outline: none;
+    font-size: 20px;
+    /* margin-left: 50px; */
+  }
+  
+  input[type="date"] {
+    height: 35px;
+    width: 200px;
+    border: 1px solid #bbbbbb;
+    border-radius: 4px;
+    outline: none;
+    font-size: 20px;
+    /* margin-left: 50px; */
+  }
+  
+  select, option {
+    height: 35px;
+    width: 200px;
+    border: 1px solid #bbbbbb;
+    border-radius: 4px;
+    outline: none;
+    font-size: 20px;
+  }
+  
+  /* BUTTON-DEFAULT */
+  
+  input[type="radio"] {
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Chrome, Safari, Opera */
+    transform: scale(1.5);
+  }
+  
+  /* DIALOG */
+  
+  .dialog .model {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000000;
+    opacity: 0.4;
+  }
+  
+  .dialog .dialog-content {
+    padding: 24px;
+    position: fixed;
+    top: calc(50% - 175px);
+    left: calc(50% - 475px);
+    width: 900px;
+    height: 350px;
+    border-radius: 10px;
+    background-color: #ffffff;
+  }
+  
+  .dialog .dialog-title {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .dialog .dialog-close-button {
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 0 4px 0 4px;
+  }
+  
+  .dialog-body {
+    font-size: 20px;
+    padding-top: 20px;
+    border-style: solid;
+    border-color: #bbb;
+    border-width: 1px 0px 0px 0px;
+  }
+  
+  .dialog .dialog-close-button:hover {
+    background-color: #bbb;
+    cursor: pointer;
+  }
+  
+  .dialog-hide {
+    display: none;
+  }
+  
+  .dialog .dialog-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 56px;
+  }
+  
+  .dialog .dialog-footer .btn-default {
+    position: absolute;
+    right: 24px;
+    height: 40px;
+    width: fit-content;
+    align-items: center;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 20px;
+    border-radius: 5px;
+    outline: none;
+    bottom: 24px;
+    cursor: pointer;
+    border: 1px solid #bbb;
+  }
+  
+  .dialog .dialog-footer .btn-default:hover {
+    background-color: #ffffff;
+  }
+  
+  /* AVATAR */
+  
+  .addAva {
+    cursor: pointer;
+  }
+  
+  .dialog .inf-avatar {
+    position: absolute;
+    height: 300px;
+    width: 200px;
+  }
+  
+  .dialog .inf-avatar .avatar {
+    height: 198px;
+    width: 198px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    border: 1px #bbb solid;
+  }
+  
+  /* PROFILE */
+  .dialog .inf-profile {
+    /* left: 300px; */
+    margin-left: 224px;
+    height: 250px;
+  }
+  
+  .txtId {
+    margin-left: 75px;
+  }
+  
+  .txtIdClass {
+    margin-left: 27px;
+  }
+  
+  .lbRelation,
+  .lbDOB,
+  .lbfullName {
+    margin-left: 53px;
+  }
+  
+  .txtFullName {
+    margin-left: 32px;
+  }
+  
+  .txtDOB {
+    margin-left: 5px;
+  }
+  

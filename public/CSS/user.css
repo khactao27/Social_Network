@@ -1,0 +1,183 @@
+/* css Herder */
+/* .sticky-header {
+  top: 0px;
+  left: 0px;
+  height: 60px;
+  width: 100%;
+  background-color: bisque;
+} */
+
+/* CSS trang ca nhan */
+
+/* .content {
+  height: fit-content;
+  width: 60%;
+  background-color: aqua;
+  top: 60px;
+  bottom: 0px;
+  margin: auto;
+} */
+
+/* avatar-profile */
+.avatar-profile {
+  display: flex;
+  flex-direction: row;
+  height: 200px;
+  background-color: #fafafa;
+  border: 1px solid rgba(var(--b6a,219,219,219),1);
+}
+
+/* avatar */
+.avatar-profile .avatar {
+  flex-grow: 1;
+  height: 95%;
+  background-color: #fafafa;
+}
+
+.avatar-profile .avatar .avatar-image {
+  width: 200px;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px solid #beb3f3;
+}
+
+/* .profile */
+.avatar-profile .profile {
+  flex-grow: 2;
+  flex-direction: column;
+}
+
+.avatar-profile .profile .id-editbtn {
+  flex-direction: row;
+  display: flex;
+  flex-grow: 1;
+  background-color: aquamarine;
+  background-color: #fafafa;
+  align-items: center;
+}
+
+/* id-name */
+.avatar-profile .profile .id-editbtn .id-name {
+  flex-grow: 1;
+  font-size: 40px;
+}
+
+/* edit-profile btn */
+
+.edit-profile {
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  padding-right: 2%;
+}
+
+.edit-profile:hover {
+  
+}
+
+/* tcn ban be */
+.btn-inbox {
+  flex-grow: 1;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.btn-inbox:hover {
+  background-color: #fff;
+}
+
+/* chua follow */
+.btnfollow {
+  flex-grow: 1;
+}
+
+.btnfollow:hover {
+
+}
+
+/* Đã follow */
+.btnfollowed{
+
+}
+
+.btnfollowed:hover{
+  background-color: #fff;
+}
+
+
+/* information invidual */
+.profile {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 5px 0;
+  font-size: 20px;
+}
+/* fullname and class */
+
+.fullname-class {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+}
+
+.fullname-class .fullname {
+  flex-grow: 1;
+}
+
+.fullname-class .className {
+  flex-grow: 1
+}
+
+/* dob and gender */
+.dob-gender {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+}
+
+.dob-gender .dob {
+  flex-grow: 1;
+}
+
+.dob-gender .gender {
+ flex-grow: 1;
+}
+
+/* hometown-relation */
+.hometown-relation {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+}
+
+.hometown-relation .hometown {
+  flex-grow: 1;
+}
+
+.hometown-relation .relation {
+  flex-grow: 1;
+}
+
+/* follow */
+.follow {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+}
+
+.follow .followed {
+  flex-grow: 1;
+}
+
+.follow .be-followed {
+  flex-grow: 1;
+}
+
+/* POST-STATUS */
+
+
+
+
+
+
