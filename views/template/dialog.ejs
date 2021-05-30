@@ -1,62 +1,65 @@
-
-<div>
-    <div id="userDetail" class="dialog dialog-hide">
-      <div class="model"></div>
-      <div class="dialog-content">
-        <div class="dialog-header">
-          <div class="dialog-title">Chỉnh sửa trang cá nhân</div>
-          <div class="dialog-close-button" id="closebtn" onclick="CloseModal()">&#x2715;</div>
+<div id="editModal" class="modal">
+  <!-- Modal content -->
+  <div class="editModal-content">
+    <span class="close" onclick="closeEdit()">&times;</span>
+    <form action="/users/<%=user.user_id%>" method="POST" enctype="multipart/form-data">
+      <div class="dialog-header">
+        <div class="dialog-title">Chỉnh sửa trang cá nhân</div>
+      </div>
+      <hr/>
+      <div class="dialog-body">
+        <div class="inf-avatar">
+          <div class="avatar">
+            <img class="avatar-edit" id="avatar_change" src="<%=user.avatar%>" alt="" />
+          </div>
+          <label class="addAva" id="addAVA">
+            <input type="file" accept="image/*" name="avatar_change" id="file_avatar" onchange="changeAvatar(event)">
+          </label>
         </div>
-        <br />
-        <div class="dialog-body">
-          <div class="inf-avatar">
-            <div class="avatar">
-              <img class="avatar" src="<%=user.avatar%>" alt="" />
+        <div class="inf-profile">
+          <div class="acc-fname">
+            <div style="flex-grow: 1;">
+              Tên tài khoản:&emsp;<input type="text" name="user_id" value="<%=user.user_id%>" readonly />
             </div>
-            <label class="addAva" id="addAVA">
-              Chọn ảnh...
-              <input id="newAva" type="file" style="visibility: hidden" />
-            </label>
+            <div style="flex-grow: 1;">
+              Họ tên:&emsp;<input name="fullname" type="text" value="<%=user.fullname%>" />
+            </div>
           </div>
-          <div class="inf-profile">
-            <label>Tên tài khoản: </label>
-            <input id="txtIdName" type="text" class="txtId" readonly/>
-            <label class="lbfullName">Họ tên:</label>
-            <input id="txtFullName" type="text" class="txtFullName" />
-            <br />
-            <br />
-            <label>Mã Lớp:</label>
-            <input id="txtIdClass" type="text" class="txtIdClass" />
-            <label class="lbDOB">Ngày sinh:</label>
-            <input id="txtDOB" type="date" class="txtDOB" />
-            <br />
-            <br />
+          <div class="class-dob">
+            <div style="flex-grow: 1;">
+              Mã lớp:&emsp;<input type="text" name="class_id" value="<%=user.class_id%>" />
+            </div>
+            <div style="flex-grow: 1;">
+              Ngày sinh:&emsp;<input type="date" class="birthday" name="birthday" value="2000-07-02" />
+            </div>
+          </div>
+          <div class="gender-div">
             <label>Giới tính:&emsp;</label>
-            <input type="radio" id="male" name="gender" value="Nam" />
-            <label for="male">Nam &emsp;&emsp;&emsp;&emsp;</label>
-            <input type="radio" id="female" name="gender" value="Nữ" />
-            <label for="female">Nữ &emsp;&emsp;&emsp;&emsp;</label>
-            <input type="radio" id="other" name="gender" value="Khác" />
-            <label for="other">Khác &emsp;</label>
-            <br />
-            <br />
-            <label>Quê Quán:</label>
-            <input id="txtHometown" type="text" class="txtHometown" />
-            <label class="lbRelation">Tình Trạng:</label>
-            <select name="relation" id="relation-select">
-              <option value="alone">Độc thân</option>
-              <option value="in-relationship">Đang trong mối quan hệ</option>
-              <option value="married">Đã kết hôn</option>
-            </select>
+            <input type="radio" id="male" name="gender" checked="checked" value="1" />
+            <label for="male"> &emsp;Nam &emsp;&emsp;&emsp;</label>
+            <input type="radio" id="female" name="gender" value="0" />
+            <label for="female">&emsp;Nữ &emsp;&emsp;&emsp;</label>
+            <input type="radio" id="other" name="gender" value="0" />
+            <label for="other">&emsp;Khác &emsp;</label>
           </div>
-        </div>
-        <div class="dialog-footer">
-          <button id="btnSave" class="btn-default">Lưu</button>
+          <div class="home-status">
+            <div style="flex-grow: 1;">
+              Quê quán:&emsp;<input type="text" name="hometown" value="<%=user.hometown%>" class="txtHometown" />
+            </div>
+            <div style="flex-grow: 1;">
+              Tình trạng:&emsp;<select name="status" id="relation-select">
+                <option value="0">Độc thân</option>
+                <option value="1">Đang trong mối quan hệ</option>
+                <option value="2">Đã kết hôn</option>
+              </select>
+            </div>
+
+          </div>
         </div>
       </div>
-    </div>
+      <div class="dialog-footer">
+        <button class="savebtn" id="btnSave" type="submit">Lưu sự thay đổi</button>
+      </div>
+    </form>
   </div>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script type="text/javascript" src="/js/profile.js"></script>
-  
-  
+</div>

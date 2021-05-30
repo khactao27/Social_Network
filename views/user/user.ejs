@@ -20,12 +20,12 @@
         <% if(user_curr.user_id == user.user_id) { %>
             <%- include('../template/newpost.ejs', {user: user}) %>
         <% } %>
-        <%-include('../template/dialog.ejs', {user: user})%>
         <div class="posts">
             <% posts.forEach(function(post){ %>
                <%- include('../template/post.ejs', {post: post, arrLoves: arrLoves, comments: comments}) %>
             <% }); %>
         </div>
+        <%-include('../template/dialog.ejs', {user: user})%>
         <script type="text/javascript" src="/js/home.js"></script>
         <script type="text/javascript" src="/js/profile.js"></script>
     </div>

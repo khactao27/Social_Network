@@ -111,6 +111,9 @@ function openSearch() {
 
 function liveSearch() {
     let name = document.getElementById('input-search').value;
+    if(name == null){
+        return;
+    }
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.status == 200 && this.readyState == 4) {

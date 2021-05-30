@@ -6,84 +6,62 @@ const Follow = require('../models/follow.model');
 const sequelize = require('../models/db');
 var multer  = require('multer');
 const {Op, QueryTypes, DataTypes} = require('sequelize');
+let helpers = require('./helpers');
+const path = require('path');
 
 
 // define the storage location for our images
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, './public/uploads/');
+        cb(null, './public/avatar/');
     },
     // By default, multer removes file extensions so let's add them back
     filename: function(req, file, cb) {
         cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
     }
 });
-
-
-module.exports.getUser = async(req, res, next)=>{
-    try {
-        let token = req.cookies.token;
-        let decode = jwt.decode(token);
-        let user_id = decode.user_id;
-        User.findAll({
-            user_id: user_id
-        }).then(users => {
-            if(users.length < 1){
-                return res.status(404).json({
-                    message: '404 User not found'
-                }).end();
-            }
-            Post.findAll({
-                where: {
-                    where: user_id
-                }
-            }).then(posts => {
-                return res.status(200).json({
-                    user: users[0],
-                    posts: posts
-                }).end();
-            })
-        })
-    } catch (error) {
-        return res.status(500).json({
-            message: "Get user failed"
-        }).end();
-    }
-}
-
 module.exports.updateInfo = async (req, res, next)=>{
     try {
-        let class_id = req.body.class_id;
-        let gender = parseInt(req.body.gender);
-        let hometown = req.body.hometown;
-        let fullname = req.body.fullname;
-        let birthday = new Date(req.body.birthday);
-        let status = parseInt(req.body.status);
-
-        let user_id = req.params.user_id;
-        // let user_id = req.userData,user_id;
-        User.findAll({
-            where: {
-                user_id: user_id
-            }
-        }).then(users =>{
-            if(users.length < 1){
-                return res.status(404).json({
-                    message: "404 not found user!"
-                }).end();
-            }else{
-                User.update({class_id: class_id, gender: gender, hometown: hometown, fullname, fullname, birthday: birthday, status: status},{
-                    where: {
-                        user_id: user_id
-                    }
-                }).then(result =>{
-                    res.status(200).json({
-                        message: "Update user infor sucessed"
-                    }).end();
-                })
-            }
-        })
-        
+    // 'profile_pic' is the name of our file input field in the HTML form
+    let upload = multer({ storage: storage, fileFilter: helpers.imageFilter }).single('avatar_change');
+     upload(req, res, async(err) => {
+         // req.file contains information of uploaded file
+         // req.body contains information of text fields, if there were any
+         if (req.fileValidationError) {
+             return res.send(req.fileValidationError);
+         }
+         else if (!req.file) {
+             return res.send('Please select an image to upload');
+         }
+         else if (err instanceof multer.MulterError) {
+             return res.send(err);
+         }
+         else if (err) {
+             return res.send(err);
+         }
+         let user_id = req.userData.user_id;
+         let class_id = req.body.class_id;
+         let gender = parseInt(req.body.gender);
+         let hometown = req.body.hometown;
+         let fullname = req.body.fullname;
+         let birthday = new Date(req.body.birthday);
+         let status = parseInt(req.body.status);
+         let avatar = '/avatar/' + path.basename(req.file.path);
+         try{
+            User.update({fullname: fullname, birthday: birthday, avatar: avatar, hometown: hometown, class_id: class_id, status: status, gender: gender}, {
+                where: {
+                    user_id: user_id
+                }
+            }).then(success =>{
+                res.redirect(`/users/${user_id}`);
+            })
+         }catch(error){
+             res.status(500).json({
+                 message: "Create new post failed",
+                 error: error
+             })
+         }
+     });
     } catch (error) {
         return res.status(500).json({
             message: "Update infor failed!"

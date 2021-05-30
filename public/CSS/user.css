@@ -22,20 +22,22 @@
 .avatar-profile {
   display: flex;
   flex-direction: row;
-  height: 200px;
+  height: 250px;
   background-color: #fafafa;
   border: 1px solid rgba(var(--b6a,219,219,219),1);
 }
 
 /* avatar */
 .avatar-profile .avatar {
+  padding: 5px;
   flex-grow: 1;
   height: 95%;
+  width: auto;
   background-color: #fafafa;
 }
 
 .avatar-profile .avatar .avatar-image {
-  width: 200px;
+  width: 250px;
   height: 100%;
   border-radius: 50%;
   border: 1px solid #beb3f3;
@@ -72,7 +74,7 @@
 }
 
 .edit-profile:hover {
-  
+  background-color: #beb3f3;
 }
 
 /* tcn ban be */
@@ -80,19 +82,25 @@
   flex-grow: 1;
   cursor: pointer;
   width: fit-content;
+  text-align: center;
 }
 
 .btn-inbox:hover {
-  background-color: #fff;
+  background-color: rgb(163, 212, 245);
 }
 
 /* chua follow */
 .btnfollow {
   flex-grow: 1;
+  border: 1px solid #beb3f3;
+  background: #fafafa;
+  padding: 5px;
+  border-radius: 18px;
+  margin-right: 0.5%;
 }
 
 .btnfollow:hover {
-
+  background: red;
 }
 
 /* Đã follow */

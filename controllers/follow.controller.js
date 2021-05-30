@@ -22,8 +22,16 @@ module.exports.follow = async (req, res, next) => {
             }).end();
         }else{
             await sequelize.query(`INSERT INTO follow(following_id, follower_id) VALUES ("${id_follow}", "${user_id}")`, {type: QueryTypes.INSERT});
+            let user = await User.findByPk(id_follow);
+            let num_followers = user.followers + 1;
+            await User.update({followers: num_followers}, {
+                where: {
+                    user_id: id_follow
+                }
+            })
+            console.log(num_followers);
             res.status(201).json({
-                message: "Success Follow"
+                num_followers: num_followers
             }).end();
         }
     } catch (error) {
@@ -47,6 +55,7 @@ module.exports.unfollow = (req, res, next) => {
                     message: '404 Not found user'
                 }).end();
             }
+            console.log(user);
             return Follow.findAll({
                 attributes: ["following_id", "follower_id"],
                 where: {
@@ -66,9 +75,18 @@ module.exports.unfollow = (req, res, next) => {
                     follower_id: user_id
                 }
             }).then(result => {
-                return res.status(200).json({
-                    message: 'Unfollow successed!'
-                }).end();
+                User.findByPk(id_follow).then(user =>{
+                    let num_followers = user.followers - 1;
+                    User.update({followers: num_followers}, {
+                        where: {
+                            user_id: id_follow
+                        }
+                    }).then(success =>{
+                        return res.status(200).json({
+                            num_followers: num_followers
+                        }).end();
+                    })
+                })
             })
         }).catch(error => {
             res.status(500).json({

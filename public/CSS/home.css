@@ -83,7 +83,7 @@ a{
 }
 body{
     margin: 0px;
-    background: linear-gradient(45deg, #dcf0f3, #f8fafa);
+    background: #fafafa;
 }
 
 /* CSS - for contents*/
@@ -178,6 +178,9 @@ body{
     border-radius: 3px;
     background: linear-gradient(45deg, #e9f3f2, #e5e0ee);
     margin: 5px 0;
+}
+.article:hover{
+    background: linear-gradient(45deg, #dbdacf, #d6c1fc);
 }
 .article-header{
     padding: 5px 2%;

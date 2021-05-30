@@ -10,5 +10,6 @@ router.post('/login', userController.login);
 router.post('/:id/follow', Auth.Auth, userFollow.follow);
 router.post('/:id/unfollow', Auth.Auth, userFollow.unfollow);
 router.get('/:user_id',Auth.Auth, userController.getUser);
+router.post('/:user_id', Auth.Auth, userController.updateInfo);
 
 module.exports = router;
