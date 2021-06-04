@@ -1,18 +1,10 @@
-<div class="new-post">
-    <div class="div-image">
-        <img src="<%=user.avatar %>" class="avatar-header" alt="avatar">
-    </div>
-    <div class="div-post">
-        <input type="text" id="input-post" class="input-post" placeholder="Bạn đang nghĩ gì vậy?">
-    </div>
-</div>
-<div id="myModal" class="modal">
+<div class="modal">
     <!-- Modal content -->
     <div class="modal-content">
-        <span class="close">&times;</span>
+        <span class="close" onclick="closeEditPost(this)">&times;</span>
         <form action="/posts" method="POST" enctype="multipart/form-data">
             <div class="header-newpost">
-                <h2>Tạo bài viết</h2>
+                <h2>Sửa bài viết</h2>
             </div>
             <hr>
             <div class="header-add">
@@ -21,8 +13,8 @@
             </div>
             <div class="content-newpost">
                 <span>
-                    <textarea name="caption" class="input-post" cols="93" placeholder="Bạn đang nghĩ gì vậy?"
-                        rows="5"></textarea>
+                    <textarea name="caption" class="input-post" cols="93"
+                        rows="5"><%=post.caption%></textarea>
                 </span>
             </div>
             <div class="feature-add">
@@ -36,15 +28,13 @@
                         </path>
                     </svg>
                 </span>
-                <input type="file" accept="image/*" name="image_post" id="file" onchange="loadFile(event)"
-                    style="display: none;"></p>
-                <p><label for="file" id="label_file" style="cursor: pointer;">Thêm ảnh</label></p>
             </div>
+            <img src="<%=post.img_url%>" style="width: 300px; height: 200px;" alt="avatar">
             <div style="text-align: center;">
                 <img id="output" width="200" />
             </div>
             <div class="create-btn">
-                <input class="btn-submit" type="submit" value="Đăng bài">
+                <input class="btn-submit" type="submit" value="Update">
             </div>
         </form>
     </div>

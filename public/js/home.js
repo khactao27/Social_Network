@@ -152,7 +152,43 @@ function myFunction() {
     var popup = document.getElementById("user-navigation");
     popup.classList.toggle("show");
 }
-
+function openBell(){
+    var popup = document.getElementById("bell");
+    popup.classList.toggle("show");
+}
+function openOptions(element){
+    let popup = element.nextElementSibling;
+    popup.classList.toggle("show");
+}
 function Chat(element){
     alert("Tính năng này đăng được phát triển, vui lòng thử lại sau =))");
+}
+
+function editPost(element){
+    element.nextElementSibling.style.display="block";
+}
+function closeEditPost(element){
+    element.parentElement.parentElement.style.display="none";
+}
+
+function deletePost(element){
+   let result = confirm("Bạn có chắc chắn muốn xóa post này không ?");
+   if(result == true){
+       var xhttp = new XMLHttpRequest();
+       xhttp.onreadystatechange = function(){
+           if(this.readyState == 4 && this.status == 200){
+               alert("Bạn đã xóa bài viết thành công!");
+               location.reload();
+               return;
+           }
+       }
+       let post_id = element.getAttribute("name");
+       let url = `/posts/${post_id}`;
+       console.log(url);
+       xhttp.open("DELETE", url, true);
+       xhttp.send(null);
+   }
+   else{
+       return;
+   }
 }

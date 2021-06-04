@@ -87,13 +87,10 @@ module.exports.createPost = (req, res)=>{
      });
 }
 module.exports.updatePost = (req, res, next)=>{
-    let post_id = req.params.postID;
     try {
-        let token = req.cookies.token;
-        let decode = jwt.decode(token);
-        let user_id = decode.user_id;
+        let post_id = req.params.id;
         let caption = req.body.caption;
-        let img_url = req.file.path;
+        let user_id = req.userData.user_id;
         Post.findByPk(post_id).then(result =>{
             if(result.length < 1){
                 return res.status(409).json({
@@ -101,7 +98,7 @@ module.exports.updatePost = (req, res, next)=>{
                 }).end();
             }
             if(result[0].user_id === user_id){
-                Post.update({caption: caption, img_url: img_url}, {
+                Post.update({caption: caption}, {
                     where: {
                         post_id: post_id
                     }
@@ -133,32 +130,25 @@ module.exports.updatePost = (req, res, next)=>{
     }
 }
 
-module.exports.deletePost = async(req, res)=>{
-    let id_post = parseInt(req.params.id_post);
+module.exports.deletePost = async(req, res, next)=>{
     try {
-        let post = await post.findByPk(id_post);
-        if(post !== null){
-            // delete the image of post.
-            let url = post.img_url;
-            fs.unlinkSync(`/uploads/${url}`);
-            // delete total love relate with post.
-            love.destroy({
+        let post_id = req.params.id;
+        Post.findByPk(post_id).then(post => {
+            if(post.length < 1){
+                return res.status(404).json({
+                    message: "404 Not found post"
+                }).end();
+            }
+            Post.update({delete: 1}, {
                 where: {
-                    post_id: id_post
+                    post_id: post_id
                 }
-            });
-            comment.destroy({
-                where: {
-                    post_id: id_post
-                }
-            });
-            
-        }else{
-            res.status(404).end();
-        }
-
-        res.status(201).send({ message: "Image deleted" });
-
+            }).then(result =>{
+                res.status(200).json({
+                    message:"Deleted post"
+                }).end();
+            })
+        })
     } catch (e) {
         res.status(400).send({ message: "Error deleting image!", error: e.toString(), req: req.body });
     }

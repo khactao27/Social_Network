@@ -67,6 +67,11 @@ const User = sequelize.define('User', {
         type: DataTypes.STRING(300),
         allowNull: false,
         defaultValue: '/avatar/avatar_default.png'
+    },
+    online:{
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 0
     }
 }, {
     tableName: 'user',

@@ -6,7 +6,9 @@
             <span><b>TwentyOneGram</b></span>
         </a>
     </div>
+    <div style="flex-grow: 3;"></div>
     <%- include('./search.ejs') %>
+    <div style="flex-grow: 2;"></div>
     <div class="icons-header">
         <div id="home-icon">
             <a href="/">
@@ -29,6 +31,14 @@
                     </path>
                 </svg>
             </a>
+        </div>
+        <div class="popup" id="notification" class="notification">
+            <img src="/icons/notification.png" onclick="openBell()" class="img-notification" alt="notification">
+            <span class="popuptext" id="bell">
+                <div>
+                    Bạn kia đã nhắc đến bạn!
+                </div>
+            </span>
         </div>
         <div class="popup" onclick="myFunction()">
             <img src="<%=user.avatar%>" class="avatar-header" alt="avatar">

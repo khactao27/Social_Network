@@ -13,12 +13,16 @@
 <body>
     <%- include('../template/header.ejs', {user: user}) %>
         <div class="contents">
-            <%- include('../template/newpost.ejs', {user: user}) %>
-            <div class="posts">
-                <% posts.forEach(function(post){ %>
-                   <%- include('../template/post.ejs', {post: post, arrLoves: arrLoves, comments: comments}) %>
-                <% }); %>
-            </div>    
+            <%- include('../template/features.ejs', {user: user}) %>
+            <div class="content-center">
+                <%- include('../template/newpost.ejs', {user: user}) %>
+                <div class="posts">
+                    <% posts.forEach(function(post){ %>
+                       <%- include('../template/post.ejs', {post: post, arrLoves: arrLoves, comments: comments, user:user}) %>
+                    <% }); %>
+                </div>
+            </div>   
+            <%- include('../template/followers.ejs', {user: user}) %>
         </div>
     <script type="text/javascript" src="/js/home.js"></script>
 </body>

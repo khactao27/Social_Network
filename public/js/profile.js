@@ -47,14 +47,14 @@ function Follow(element){
 
 let editModal = document.getElementById("editModal");
 function openEditProfile(){
-  document.getElementsByClassName("modal")[1].style.display = "block";
+  editModal.style.display = "block";
 }
 function closeEdit(){
-  document.getElementsByClassName("modal")[1].style.display = "none";
+  editModal.style.display = "none";
 }
 window.onclick = function (event) {
   if (event.target == editModal) {
-      document.getElementsByClassName("modal")[1].style.display = "none";
+      editModal.style.display = "none";
   }
 }
 

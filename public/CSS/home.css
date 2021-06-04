@@ -82,15 +82,19 @@ a{
     text-decoration: none;
 }
 body{
-    margin: 0px;
+    margin: 0%;
+    padding: 0%;
     background: #fafafa;
+    overflow-x: hidden;
+    overflow-y: inherit;
 }
 
 /* CSS - for contents*/
 
 .contents{
-    margin: 0 25%;
     padding-top: 5px;
+    display: flex;
+    flex-direction: row;
 }
 .new-post{
     background: linear-gradient(45deg, #e9f3f2, #e5e0ee);
@@ -108,7 +112,7 @@ body{
     flex-grow: 4;
     padding: 15px 0;
 }
-#input-post{
+.input-post{
     width: 100%;
     padding: 15px 0;
     border: 1px solid rgba(var(--b6a,219,219,219),1);
@@ -243,7 +247,7 @@ body{
   }
   
   /* The actual popup */
-  .popup .popuptext {
+.popup .popuptext {
     visibility: hidden;
     width: 300px;
     color: #000000;
@@ -257,9 +261,34 @@ body{
     font-size: medium;
     margin-left: -150px;
   }
+.popup .options {
+    visibility: hidden;
+    text-align: center;
+    width: 200px;
+    color: #000000;
+    background: linear-gradient(45deg, #c5f5f1, #dccdf5);
+    border-radius: 6px 0px 6px 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    top: 130%;
+    left: 50%;
+    font-size: medium;
+    margin-left: -190px;
+  }
+.popup .options::after{
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 97%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent  #dfcff8 transparent;
+}
   
   /* Popup arrow */
-  .popup .popuptext::after {
+.popup .popuptext::after {
     content: "";
     position: absolute;
     bottom: 100%;
@@ -268,14 +297,14 @@ body{
     border-width: 5px;
     border-style: solid;
     border-color: transparent transparent  #d7caec transparent;
-  }
+}
   
   /* Toggle this class - hide and show the popup */
-  .popup .show {
+.popup .show {
     visibility: visible;
     -webkit-animation: fadeIn 1s;
     animation: fadeIn 1s;
-  }
+}
   
   /* Add animation (fade in the popup) */
   @-webkit-keyframes fadeIn {
@@ -307,7 +336,7 @@ body{
 .create-btn{
 
 }
-#btn-submit{
+.btn-submit{
     width: 100%;
     padding: 10px 0;
     background-color: #0099ff;
@@ -327,4 +356,80 @@ body{
 template:focus{
     border: 1px solid, #fafafa;
     border-radius: 8px;
+}
+
+
+
+.content-center{
+    display: flex;
+    width: 45%;
+    flex-direction: column;
+    height: 800px;
+    overflow-y: inherit;
+    overflow-x: hidden;
+    padding: 0px 5px;
+}
+.content-left {
+    display: flex;
+    width: 30%;
+    flex-direction: column;
+}
+.content-right{
+    display: flex;
+    width: 25%;
+    flex-direction: column;
+    padding-left: 10px;
+}
+.followers {
+    overflow-x: hidden;
+    overflow-y: inherit;
+    height: 600px;
+}
+.online-header{
+    text-align: center;
+    font-weight: bold;
+    height: 40px;
+    padding-top: 10px;
+}
+
+.img-notification {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.home-header{
+    cursor: pointer;
+    padding-top: 10px;
+    padding-left: 50px;
+    display: flex;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+}
+.home-header:hover{
+    background: #0099ff;
+}
+
+.profile-left{
+    cursor: pointer;
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    padding-left: 50px;
+}
+.profile-left:hover{
+    background: #0099ff;
+}
+
+.exploer-left{
+    cursor: pointer;
+    padding-top: 10px;
+    padding-left: 50px;
+    display: flex;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+}
+.exploer-left:hover{
+    background: #0099ff;
 }

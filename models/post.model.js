@@ -35,6 +35,11 @@ const Post = sequelize.define('Post', {
     num_of_comments: {
         type: DataTypes.INTEGER,
         allowNull: false
+    },
+    delete: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: 0
     }
 }, {
     tableName: 'post',

@@ -1,9 +1,23 @@
 <div class="article">
     <div class="article-header">
-        <img src="<%=post.avatar%>" class="avatar-header" alt="avatar">
-        <a href="/users/<%=post.user_id%>" style="margin-left: 2%;"><b>
+        <img src="<%=post.avatar%>" class="avatar-header" alt="avatar" style="flex-grow: 1;">
+        <a href="/users/<%=post.user_id%>" style="margin-left: 2%;flex-grow: 1;"><b>
                 <%=post.user_id%>
             </b></a>
+        <div style="flex-grow: 1200;"></div>
+        <div class="popup" style="flex-grow: 1;" class="notification">
+            <img src="/icons/options.png" style="width: 20px;height: 20px;flex-grow: 1;cursor: pointer;" onclick="openOptions(this)" alt="options">
+            <span class="options">
+                <% if(user.user_id == post.user_id){ %>
+                    <div style="display:flex;flex-direction: row;align-items: center; padding-left: 10%;" name="<%=post.post_id%>" onclick="deletePost(this)"><img src="/icons/delete.png" style="width: 20px;height: 20px;margin-right: 5%;" alt="delete">Xóa bài</div>
+                    <div style="display:flex;flex-direction: row;align-items: center;padding-left: 10%;margin-top: 3%;" onclick="editPost(this)"><img src="/icons/edit.png" style="width: 20px;height: 20px;margin-right: 5%;" alt="delete">Sửa bài</div>
+                    <%-include('./editpost.ejs', {user: user, post: post})%>
+                    <div style="display:flex;flex-direction: row;align-items: center;padding-left: 10%;margin-top: 3%;"><img src="/icons/share.png" style="width: 20px;height: 20px;margin-right: 5%;" alt="delete">Chia sẻ</div>
+                <%} else { %>
+                    <div style="display:flex;flex-direction: row;align-items: center;padding-left: 10%;"><img src="/icons/share.png" style="width: 20px;height: 20px;margin-right: 5%;" alt="delete">Chia sẻ</div>
+                <% } %>
+            </span>
+        </div>
     </div>
     <div class="images">
         <img class="image-item" src="<%=post.img_url%>" alt="image-status">
@@ -52,7 +66,32 @@
     </div>
     <div class="time-like">
         <span name="<%=post.num_of_loves%>"><%=post.num_of_loves%> Like</span>
-        <small><%=post.timestamp.getHours() + ":" + post.timestamp.getMinutes() + ":" + post.timestamp.getSeconds()%></small>
+        <%function timeDifference(current, previous) { %>
+
+            <%var msPerMinute = 60 * 1000;%>
+            <%var msPerHour = msPerMinute * 60;%>
+            <%var msPerDay = msPerHour * 24;%>
+            <%var msPerMonth = msPerDay * 30;%>
+            <%var msPerYear = msPerDay * 365;%>
+        
+            <%var elapsed = current - previous;%>
+        
+            <%if (elapsed < msPerMinute) {%>
+                <% return Math.round(elapsed/1000) + ' giây trước';  %> 
+            <%} else if (elapsed < msPerHour) { %>
+                 <%return Math.round(elapsed/msPerMinute) + ' phút trước';  %>
+            <%}else if (elapsed < msPerDay ) {%>
+                <%return Math.round(elapsed/msPerHour ) + ' giờ trước';  %> 
+            <%}else if (elapsed < msPerMonth) {%>
+                <%return Math.round(elapsed/msPerDay) + ' ngày trước'; %>  
+            <%}else if (elapsed < msPerYear) {%>
+                <%return Math.round(elapsed/msPerMonth) + ' tháng trước';%> 
+            <%}else {%>
+                <%return Math.round(elapsed/msPerYear ) + ' năm trước';%> 
+            <%} } %>
+
+            <% let time = timeDifference(new Date().getTime(), post.timestamp.getTime()) %>
+        <small><%=time%></small>
     </div>
     <div class="captions">
         <span>
