@@ -90,7 +90,8 @@ module.exports.login = async(req, res, next)=>{
                    const token = jwt.sign({
                         email: user[0].email,
                         user_id: user[0].user_id,
-                        avatar: user[0].avatar
+                        avatar: user[0].avatar,
+                        fullname: user[0].fullname
                     }, "Tee_secret", {
                         expiresIn:"1h"
                     });
@@ -166,7 +167,8 @@ module.exports.getUser = async(req, res, next)=>{
         let posts = await Post.findAll({
             where: {
                 user_id: user_id
-            }
+            },
+            order:[['post_id', 'DESC']]
         });
         posts = JSON.stringify(posts);
         posts = JSON.parse(posts);

@@ -65,7 +65,7 @@
         </span>
     </div>
     <div class="time-like">
-        <span name="<%=post.num_of_loves%>"><%=post.num_of_loves%> Like</span>
+        <span name="<%=post.num_of_loves%>"><%=post.num_of_loves%> like</span>
         <%function timeDifference(current, previous) { %>
 
             <%var msPerMinute = 60 * 1000;%>
@@ -77,7 +77,7 @@
             <%var elapsed = current - previous;%>
         
             <%if (elapsed < msPerMinute) {%>
-                <% return Math.round(elapsed/1000) + ' giây trước';  %> 
+                <% return 'Vừa xong';  %> 
             <%} else if (elapsed < msPerHour) { %>
                  <%return Math.round(elapsed/msPerMinute) + ' phút trước';  %>
             <%}else if (elapsed < msPerDay ) {%>

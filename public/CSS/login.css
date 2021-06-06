@@ -18,7 +18,8 @@ h1 {
 }
 
 body {
-    background-color: #fafafa;
+    background: url('/images/background.jpg') no-repeat center fixed;
+    background-size: cover;
 }
 
 #main {

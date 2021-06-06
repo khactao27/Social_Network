@@ -10,6 +10,53 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@1,300&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io("http://localhost:3000");
+        function Follow(element){
+            var xhttp = new XMLHttpRequest();
+            let user_id = element.getAttribute("name");
+            let status = parseInt(element.getAttribute("value"));
+            let follower = document.getElementById("num-follower");
+            if(status == 0){
+                xhttp.onreadystatechange = function(){
+                    if(this.status == 201 && this.readyState == 4){
+                        element.innerHTML = "Đang theo dõi";
+                        element.setAttribute("value", "1");
+                        let data = JSON.parse(this.responseText);
+                        let num_followers = data.num_followers;
+                        follower.innerHTML = `${num_followers} người theo dõi`;
+                        element.style.background ="#beb3f3";
+                        return;
+                    }
+                };
+                socket.emit("Notifications", {following_id: user_id});
+                let url = `/users/${user_id}/follow`;
+                xhttp.open("POST", url, true);
+                xhttp.send(JSON.stringify({user_id: user_id}));
+        }else{
+            xhttp.onreadystatechange= function(){
+                if(this.status == 200 && this.readyState == 4){
+                    element.innerHTML = "Theo dõi";
+                    element.setAttribute("value", "0");
+                    let data = JSON.parse(this.responseText);
+                    let num_followers = data.num_followers;
+                    follower.innerHTML = `${num_followers} người theo dõi`;
+                    element.style.background = "rgb(253, 253, 253)";
+                    return;
+                }
+            };
+            let auth = confirm("Bạn đồng ý hủy theo dõi?");
+            if(auth == true){
+                let url = `/users/${user_id}/unfollow`;
+                xhttp.open("POST", url, true);
+                xhttp.send(null);
+            }else{
+                return;
+            }
+        }
+    }
+    </script>
 </head>
 
 <body>
@@ -22,8 +69,9 @@
         <% } %>
         <div class="posts">
             <% posts.forEach(function(post){ %>
-               <%- include('../template/post.ejs', {post: post, arrLoves: arrLoves, comments: comments}) %>
-            <% }); %>
+                <% if(post.delete == 0){ %>
+                   <%- include('../template/post.ejs', {post: post, arrLoves: arrLoves, comments: comments, user: user_curr}) %>
+            <% } }); %>
         </div>
         <%-include('../template/dialog.ejs', {user: user})%>
         <script type="text/javascript" src="/js/home.js"></script>

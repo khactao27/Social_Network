@@ -117,31 +117,30 @@ function liveSearch() {
     let xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function () {
         if (this.status == 200 && this.readyState == 4) {
-            let ul = document.getElementById("list");
             let span = document.getElementById('popupSearch');
-            span.removeChild(ul);
-            ul = document.createElement("UL");
-            ul.id = "list";
-            var li, a, text, n;
-
+            span.innerHTML="";
+            let a, text, img, div;
             let users = JSON.parse(this.responseText);
             if (users.length == 0) {
-                li = document.createElement("LI");
-                li.appendChild(document.createTextNode("No results."));
-                ul.appendChild(li);
+                div = document.createElement("div");
+                div.appendChild(document.createTextNode("Không có kết quả phù hợp."))
+                span.appendChild(div);
             } else {
                 for (var user of users) {
-                    li = document.createElement("LI");
+                    div = document.createElement("div");
+                    div.classList.add("user-result");
+                    img = document.createElement("img");
+                    img.src = user.avatar;
+                    img.classList.add("avatar-header");
                     a = document.createElement("a");
                     a.href = `/users/${user.user_id}`;
-                    n = `${user.fullname} (${user.user_id})`;
-                    text = document.createTextNode(n);
+                    text = document.createTextNode(`${user.fullname} (${user.user_id})`);
                     a.appendChild(text);
-                    li.appendChild(a);
-                    ul.appendChild(li);
+                    div.appendChild(img);
+                    div.appendChild(a);
+                    span.appendChild(div);
                 }
             }
-            span.appendChild(ul);
         }
     }
     let url = '/search?name=' + name;
@@ -152,9 +151,69 @@ function myFunction() {
     var popup = document.getElementById("user-navigation");
     popup.classList.toggle("show");
 }
+
+function timeDifference(current, previous) {
+
+    var msPerMinute = 60 * 1000;
+    var msPerHour = msPerMinute * 60;
+    var msPerDay = msPerHour * 24;
+    var msPerMonth = msPerDay * 30;
+    var msPerYear = msPerDay * 365;
+
+    var elapsed = current - previous;
+
+    if (elapsed < msPerMinute) {
+         return ' Vừa xong.';   
+    }
+
+    else if (elapsed < msPerHour) {
+         return Math.round(elapsed/msPerMinute) + ' phút trước.';   
+    }
+
+    else if (elapsed < msPerDay ) {
+         return Math.round(elapsed/msPerHour ) + ' giờ trước';   
+    }
+
+    else if (elapsed < msPerMonth) {
+        return 'approximately ' + Math.round(elapsed/msPerDay) + ' ngày trước.';   
+    }
+
+    else if (elapsed < msPerYear) {
+        return 'approximately ' + Math.round(elapsed/msPerMonth) + ' tháng trước.';   
+    }
+
+    else {
+        return 'approximately ' + Math.round(elapsed/msPerYear ) + ' năm trước.';   
+    }
+}
+
 function openBell(){
     var popup = document.getElementById("bell");
+    popup.innerHTML="";
+    document.getElementById("bell-icon").src ="/icons/bellstatics.png";
     popup.classList.toggle("show");
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function(){
+        if(this.readyState == 4 && this.status == 200){
+            let notifications = JSON.parse(this.responseText);
+            notifications.forEach(notification => {
+                let div = document.createElement("div");
+                div.classList.add("notification");
+                let a = document.createElement("a");
+                a.href = `/users/${notification.actor_id}`;
+                let text = document.createTextNode(`${notification.actor_id} đã theo dõi bạn!`);
+                let small = document.createElement("small");
+                let textspan = document.createTextNode(`${timeDifference(new Date().getTime(), new Date(notification.timestamp).getTime())}`);
+                small.appendChild(textspan);
+                a.appendChild(text);
+                div.appendChild(a);
+                div.appendChild(small);
+                popup.appendChild(div);
+            });
+        }
+    }
+    xhttp.open("GET", '/notifications', true);
+    xhttp.send(null);
 }
 function openOptions(element){
     let popup = element.nextElementSibling;
@@ -191,4 +250,8 @@ function deletePost(element){
    else{
        return;
    }
+}
+
+function updatePost(element){
+    
 }

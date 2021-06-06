@@ -8,6 +8,42 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@1,300&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        //connect to server socket io
+        var socket = io("http://localhost:3000");
+        socket.on("update-notification", (data)=>{
+            let div = document.createElement("div");
+            let text = document.createTextNode("ai đó vừa theo dõi" + data);
+            div.appendChild(text);
+            document.getElementById("bell-icon").src ="/icons/bell.gif";
+            document.getElementById("bell").insertBefore(div, document.getElementById("bell").childNodes[0]);
+        });
+        socket.emit("onlines", {user_id:"<%=user.user_id%>", avatar: "<%=user.avatar%>", fullname:"<%=user.fullname%>"});
+        socket.on("user-onlines", users =>{
+            let usersOnline = document.getElementById("online-users");
+            usersOnline.innerHTML ="";
+            let avatar, a, textName, imgOnline, div;
+            users.forEach(user => {
+                div = document.createElement("div");
+                div.classList.add("user-result");
+                avatar = document.createElement("img");
+                avatar.src = user.avatar;
+                avatar.classList.add("avatar-header");
+                a = document.createElement("a");
+                a.href = `/users/${user.user_id}`;
+                textName = document.createTextNode(user.fullname);
+                a.appendChild(textName);
+                imgOnline = document.createElement("img");
+                imgOnline.src = "/icons/online.png";
+                imgOnline.classList.add("online-img");
+                div.appendChild(avatar);
+                div.appendChild(a);
+                div.appendChild(imgOnline);
+                usersOnline.appendChild(div);
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -18,8 +54,9 @@
                 <%- include('../template/newpost.ejs', {user: user}) %>
                 <div class="posts">
                     <% posts.forEach(function(post){ %>
-                       <%- include('../template/post.ejs', {post: post, arrLoves: arrLoves, comments: comments, user:user}) %>
-                    <% }); %>
+                       <% if(post.delete == 0) { %>
+                          <%- include('../template/post.ejs', {post: post, arrLoves: arrLoves, comments: comments, user:user}) %>
+                    <% } }); %>
                 </div>
             </div>   
             <%- include('../template/followers.ejs', {user: user}) %>

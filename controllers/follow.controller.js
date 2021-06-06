@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user.model');
 const sequelize = require('../models/db');
 const { QueryTypes } = require('sequelize');
+const Notification = require('../models/notification.model');
 
 module.exports.follow = async (req, res, next) => {
     try {
@@ -28,8 +29,14 @@ module.exports.follow = async (req, res, next) => {
                 where: {
                     user_id: id_follow
                 }
-            })
-            console.log(num_followers);
+            });
+            Notification.create({
+                noti_id: "noti" + new Date().getTime(),
+                user_id: id_follow,
+                noti_type: 1,
+                actor_id: user_id,
+                timestamp: new Date() 
+            });
             res.status(201).json({
                 num_followers: num_followers
             }).end();
@@ -55,7 +62,6 @@ module.exports.unfollow = (req, res, next) => {
                     message: '404 Not found user'
                 }).end();
             }
-            console.log(user);
             return Follow.findAll({
                 attributes: ["following_id", "follower_id"],
                 where: {

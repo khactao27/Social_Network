@@ -1,30 +1,13 @@
-/* css Herder */
-/* .sticky-header {
-  top: 0px;
-  left: 0px;
-  height: 60px;
-  width: 100%;
-  background-color: bisque;
-} */
-
-/* CSS trang ca nhan */
-
-/* .content {
-  height: fit-content;
-  width: 60%;
-  background-color: aqua;
-  top: 60px;
-  bottom: 0px;
-  margin: auto;
-} */
 
 /* avatar-profile */
 .avatar-profile {
+  min-width: fit-content;
   display: flex;
   flex-direction: row;
   height: 250px;
   background-color: #fafafa;
   border: 1px solid rgba(var(--b6a,219,219,219),1);
+  border-radius: 7px;
 }
 
 /* avatar */
@@ -67,14 +50,15 @@
 /* edit-profile btn */
 
 .edit-profile {
-  width: 50px;
-  height: 50px;
+  height: 40px;
   cursor: pointer;
-  padding-right: 2%;
+  padding: 6px;
+  box-sizing: border-box;
+  border-radius: 100%;
 }
 
 .edit-profile:hover {
-  background-color: #beb3f3;
+  background-color: #d6d6d6;
 }
 
 /* tcn ban be */
@@ -85,28 +69,30 @@
   text-align: center;
 }
 
-.btn-inbox:hover {
-  background-color: rgb(163, 212, 245);
+.btn-inbox > svg {
+  padding: 7px;
+  box-sizing: border-box;
+  border-radius: 38%;
+  height: 40px;
+}
+
+.btn-inbox > svg:hover {
+  background-color: #d6d6d6;
 }
 
 /* chua follow */
 .btnfollow {
   flex-grow: 1;
-  border: 1px solid #beb3f3;
+  border: 1px solid #d6d6d6;
   background: #fafafa;
+  background-color: aqua;
   padding: 5px;
   border-radius: 18px;
-  margin-right: 0.5%;
+  margin-right: 3%;
+  /* max-width: fit-content; */
+  cursor: pointer;
 }
 
-.btnfollow:hover {
-  background: red;
-}
-
-/* Đã follow */
-.btnfollowed{
-
-}
 
 .btnfollowed:hover{
   background-color: #fff;
