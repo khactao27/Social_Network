@@ -31,3 +31,4 @@ Yêu cầu:
 4. Template engine: ejs.
 5. AJAX
 6. Sequelize - ORM.
+![197522131_512397569889883_783429146373501010_n](https://user-images.githubusercontent.com/61827301/120985447-d0b53580-c7a5-11eb-9fa2-adb6f2cf420c.jpg)
