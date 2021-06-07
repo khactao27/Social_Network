@@ -10,7 +10,7 @@ function React(element) {
             if (this.readyState == 4 && this.status == 201) {
                 element.setAttribute("fill", "#ed4956");
                 num_of_loves++;
-                span.innerHTML = num_of_loves + " Like";
+                span.innerHTML = num_of_loves + " like";
                 span.setAttribute("name", num_of_loves);
             }
         }
@@ -22,7 +22,7 @@ function React(element) {
             if (this.readyState == 4 && this.status == 201) {
                 element.setAttribute("fill", "#999999");
                 num_of_loves--;
-                span.innerHTML = num_of_loves + " Like";
+                span.innerHTML = num_of_loves + " like";
                 span.setAttribute("name", num_of_loves);
             }
         }

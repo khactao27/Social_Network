@@ -61,7 +61,7 @@
 
 <body>
     <%- include('../template/header.ejs', {user: user_curr}) %>
-    <div class="contents">
+    <div class="contents-profile">
         <%- include('../template/profile.ejs', {user: user, user_curr: user_curr, checkfollow: checkfollow}) %>
         <br />
         <% if(user_curr.user_id == user.user_id) { %>

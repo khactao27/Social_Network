@@ -90,38 +90,18 @@ module.exports.updatePost = (req, res, next)=>{
     try {
         let post_id = req.params.id;
         let caption = req.body.caption;
-        let user_id = req.userData.user_id;
-        Post.findByPk(post_id).then(result =>{
-            if(result.length < 1){
-                return res.status(409).json({
-                    message: "Do not have a post want update"
-                }).end();
+        //let user_id = req.userData.user_id;
+        Post.update({caption: caption}, {
+            where: {
+                post_id: post_id
             }
-            if(result[0].user_id === user_id){
-                Post.update({caption: caption}, {
-                    where: {
-                        post_id: post_id
-                    }
-                }).then(rs =>{
-                    res.status(200).json({
-                        message: 'update post success!'
-                    }).end();
-                }).catch(err =>{
-                    res.status(500).json({
-                        message: 'Update failed'
-                    }).end();
-                })
-            }
-            else{
-                res.status(404).json({
-                    message: '404 : post not found'
-                }).end();
-            }
-        }).catch(error=>{
-            return res.status(500).json({
-                message:'Search failed'
+        }).then(rs =>{
+            res.redirect('/');
+        }).catch(err =>{
+            res.status(500).json({
+                message: 'Update failed'
             }).end();
-        });
+        })
     } catch (error) {
         res.status(500).json({
             message: "Update failed",

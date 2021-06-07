@@ -9,7 +9,10 @@
   border: 1px solid rgba(var(--b6a,219,219,219),1);
   border-radius: 7px;
 }
-
+.contents-profile{
+  margin: 0 25%;
+  padding-top: 5px;
+}
 /* avatar */
 .avatar-profile .avatar {
   padding: 5px;

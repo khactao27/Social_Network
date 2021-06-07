@@ -7,7 +7,7 @@ let Auth = require('../middlewares/auth.middleware');
 const router = express.Router();
 
 router.get('/:id', controller.getPost);
-router.put('/:id', controller.updatePost);
+router.post('/:id',Auth.Auth, controller.updatePost);
 router.post('/', Auth.Auth, controller.createPost);
 router.delete('/:id', controller.deletePost);
 router.post('/:idpost/like',Auth.Auth, love.react);

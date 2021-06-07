@@ -1,22 +1,22 @@
 <div class="content-left">
-    <div style="cursor: pointer;height: 200px;display: flex;flex-direction: column;align-items: center;padding-top: 10%;background-image: url('icons/background2.jpg');background-repeat: no-repeat;background-size:100% 100%;">
+    <div style="cursor: pointer;height: 200px;display: flex;flex-direction: column;align-items: center;padding-top: 10%;background-image: url('images/natural.gif');background-repeat: no-repeat;background-size:100% 100%;">
         <img src="<%=user.avatar%>" alt="avatar" style="width: 100px;height: 100px;border-radius: 50%;">
         <div style="font-size: 30px;font-weight: bold;margin-bottom: 5px;color:rgb(232, 235, 238);"><%=user.fullname%></div>
-        <div style="display: flex; align-items: center;">
+        <!-- <div style="display: flex; align-items: center;">
             <img src="/icons/location.png" style="width: 20px;height: 20px;" alt="location">
             <span style="color: aliceblue;">Bắc Giang</span>
-        </div>
+        </div> -->
     </div>
     <div class="home-header">
         <img src="icons/home.png" style="width: 50px; height: 50px;" alt="">
-        <a href="/" style="margin-left: 2%;">Home</a>
+        <a href="/" style="color: black;margin-left: 10%;font-size: 30px;font-weight: bold;">Home</a>
     </div>
-    <div class="exploer-left">
+    <!-- <div class="exploer-left">
         <img src="icons/exploer.png" style="width: 50px; height: 50px;" alt="">
-        <span style="margin-left: 2%;">Exploer</span>
-    </div>
+        <span style="margin-left: 10%;font-weight: bold;font-size: 30px;">Exploer</span>
+    </div> -->
     <div class="profile-left">
         <img src="icons/profile.png" style="width: 50px; height: 50px;" alt="">
-        <a href="/users/<%=user.user_id%>" style="margin-left: 2%;">Profile</a>
+        <a href="/users/<%=user.user_id%>" style="color: black;margin-left: 10%;font-weight: bold;font-size: 30px;">Profile</a>
     </div>
 </div>

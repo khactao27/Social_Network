@@ -13,11 +13,7 @@
         //connect to server socket io
         var socket = io("http://localhost:3000");
         socket.on("update-notification", (data)=>{
-            let div = document.createElement("div");
-            let text = document.createTextNode("ai đó vừa theo dõi" + data);
-            div.appendChild(text);
             document.getElementById("bell-icon").src ="/icons/bell.gif";
-            document.getElementById("bell").insertBefore(div, document.getElementById("bell").childNodes[0]);
         });
         socket.emit("onlines", {user_id:"<%=user.user_id%>", avatar: "<%=user.avatar%>", fullname:"<%=user.fullname%>"});
         socket.on("user-onlines", users =>{

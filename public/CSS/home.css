@@ -113,7 +113,7 @@ body{
 }
 .input-post{
     width: 100%;
-    padding: 15px 0;
+    padding: 15px 1px;
     border: 1px solid rgba(var(--b6a,219,219,219),1);
     border-radius: 8px;
 }
@@ -260,7 +260,6 @@ body{
     font-size: medium;
     margin-left: -150px;
     max-height: 300px;
-    overflow-y: auto;
     text-align: left;
 }
 .popup .popuptext::after {
@@ -271,7 +270,7 @@ body{
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: transparent transparent  #d2bff1 transparent;
+    border-color: transparent transparent  #cab3f0 transparent;
 }
 .popup .profile-logout{
     visibility: hidden;

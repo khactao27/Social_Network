@@ -43,7 +43,10 @@ const getUser = (user_id) =>{
 
 io.on("connection", function(socket){
   socket.on("Notifications", data=>{
-    socket.broadcast.emit("update-notification", data.following_id);
+    const user = getUser(data.following_id);
+    if(user != undefined){
+      socket.to(user.socketId).emit("update-notification", data.following_id);
+    }
   })
   socket.on("onlines", ({user_id, avatar, fullname})=>{
     addUser(user_id, socket.id, avatar, fullname);
@@ -51,7 +54,6 @@ io.on("connection", function(socket){
   })
   socket.on("disconnect", ()=>{
     removeUser(socket.id);
-    console.log("a user disconnected!");
     io.emit("user-onlines", users);
   })
 })
