@@ -1,4 +1,4 @@
-# social-network-IT4409
+# social-network
 
 #Đề tài: Mạng xã hội mini trong trường học
 Yêu cầu:
